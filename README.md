@@ -1,4 +1,4 @@
-# Ys III: Wanderers From Ys (PS2) English Translation
+# Ys III: Wanderers From Ys (PS2) English Translation [SLPM-62532]
 Repo for translating Ys III: Wanderers From Ys on PS2
 
 # Notes
