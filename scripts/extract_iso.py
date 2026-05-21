@@ -1,0 +1,74 @@
+# /// script
+# requires-python = ">=3.10"
+# dependencies = [
+#     "pillow",
+# ]
+# ///
+import os
+import shutil
+import subprocess
+from pathlib import Path
+#from isotool import dump_iso
+#from tasks.to_csv import to_csv
+#from tasks.decompile import bin_to_kscript
+from tasks.unpack import unpack
+#from tasks.extract_graphic import extract_all_graphics
+#from tasks.dump_font import dump_font
+
+STAGES = ["00", "10", "20", "30", "40", "50", "60"]
+
+
+def main():
+    print("Copy the original .iso next to this script and rename it to lostkefin.iso")
+
+    if os.path.exists("extracted"):
+        shutil.rmtree("extracted")
+    print("Extracting bin...")
+    proc = subprocess.run(
+        ["dumpsxiso", "-x", "extracted", "-s", "wanderers.xml", Path("Ys III - Wanderers from Ys (Japan).bin")],
+        stdout=subprocess.PIPE,
+        text=True,
+        shell=False,
+    )
+
+    # Copy extracted to translated
+    if os.path.exists("translated"):
+        shutil.rmtree("translated")
+    shutil.copytree("extracted", "translated")
+    print("Done!")
+
+    print("Unpacking DATA.BIN...")
+    unpack("DATA.BIN")
+"""
+    print("Decompiling script files into .kscript files...")
+    if os.path.exists("decompiled"):
+        shutil.rmtree("decompiled")
+    os.makedirs("decompiled", exist_ok=True)
+    for stage in STAGES:
+        print(f"Decompiling stage {stage}...")
+        src = f"DATA/script/stage{stage}.bin"
+        dst = f"decompiled/stage{stage}.kscript"
+        bin_to_kscript(src, dst)
+    print("Done!")
+
+    print("Extracting text from .kscript files and dumping to CSV...")
+    if os.path.exists("csv"):
+        shutil.rmtree("csv")
+    os.makedirs("csv", exist_ok=True)
+    for stage in STAGES:
+        src = f"decompiled/stage{stage}.kscript"
+        dst = f"csv/stage{stage}.csv"
+        to_csv(src, dst)
+    print("Done!")
+
+    print("Extracting graphics...")
+    extract_all_graphics()
+    print("Done!")
+
+    print("Dumping font...")
+    dump_font()
+    print("Done!")
+"""
+
+if __name__ == "__main__":
+    main()
