@@ -467,18 +467,21 @@ class ConditionalRelativeJump(Operation):
 
     # Jump destination = (opcode_position + 1) + target, where target
     # is the raw `skip_len` byte from the script (i.e. relative to the
-    # byte just after the opcode).
-    def __init__(self, target: int, type: int, arg: int):
+    # byte just after the opcode). `value` is the argument passed to the
+    # check opcode named by `type` (e.g. flag/event/item id). Named to
+    # avoid colliding with the generic Operation.arg (bytes) used by
+    # line_to_op when round-tripping wscript back to .bin.
+    def __init__(self, target: int, type: int, value: int):
         self.target = target
         self.type = type
-        self.arg = arg
+        self.value = value
 
     def to_object(self):
         return {
             "name": self.__class__.__name__,
             "target": hex(self.target),
             "type": hex(self.type),
-            "arg": hex(self.arg),
+            "value": hex(self.value),
         }
 
     def to_bytes(self):
@@ -486,17 +489,17 @@ class ConditionalRelativeJump(Operation):
             self.opcode.to_bytes(1, "little")
             + self.target.to_bytes(1, "little")
             + self.type.to_bytes(1, "little")
-            + self.arg.to_bytes(1, "little")
+            + self.value.to_bytes(1, "little")
         )
 
     @classmethod
     def from_io(cls, io):
         target = int.from_bytes(io.read(1), "little")
         type = int.from_bytes(io.read(1), "little")
-        arg = int.from_bytes(io.read(1), "little")
+        value = int.from_bytes(io.read(1), "little")
         if type not in (0x29, 0x2C, 0x2D, 0x2E, 0x30):
             raise ValueError(f"Unknown conditional jump type {hex(type)}")
-        return cls(target, type, arg)
+        return cls(target, type, value)
 
 
 class SkipByte(Operation):
