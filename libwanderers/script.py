@@ -543,8 +543,6 @@ def bin_to_wscript(bin: bytes) -> str:
         pointer = int.from_bytes(bin_io.read(0x4), "little")
         script_indices.append(index)
         script_pointers.append(pointer)
-        if index == 0:
-            break
 
     bin_io.seek(0x800)
 
