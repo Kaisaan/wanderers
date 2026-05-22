@@ -7,15 +7,15 @@
 import os
 import shutil
 import subprocess
+import sys
 from pathlib import Path
-#from isotool import dump_iso
-#from tasks.to_csv import to_csv
-#from tasks.decompile import bin_to_kscript
-from tasks.unpack import unpack
-#from tasks.extract_graphic import extract_all_graphics
-#from tasks.dump_font import dump_font
 
-STAGES = ["00", "10", "20", "30", "40", "50", "60"]
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+
+from libwanderers.archive import unpack
+from libwanderers.script import bin_to_wscript
+
+STAGES = ["00", "01", "02", "03", "04", "05", "06"]
 
 
 def main():
@@ -24,7 +24,7 @@ def main():
     if os.path.exists("extracted"):
         shutil.rmtree("extracted")
     print("Extracting bin...")
-    proc = subprocess.run(
+    subprocess.run(
         ["dumpsxiso", "-x", "extracted", "-s", "wanderers.xml", Path("Ys III - Wanderers from Ys (Japan).bin")],
         stdout=subprocess.PIPE,
         text=True,
@@ -39,36 +39,18 @@ def main():
 
     print("Unpacking DATA.BIN...")
     unpack("DATA.BIN")
-"""
-    print("Decompiling script files into .kscript files...")
+
+    print("Decompiling script files into .wscript files...")
     if os.path.exists("decompiled"):
         shutil.rmtree("decompiled")
     os.makedirs("decompiled", exist_ok=True)
     for stage in STAGES:
         print(f"Decompiling stage {stage}...")
         src = f"DATA/script/stage{stage}.bin"
-        dst = f"decompiled/stage{stage}.kscript"
-        bin_to_kscript(src, dst)
+        dst = f"decompiled/stage{stage}.wscript"
+        bin_to_wscript(src, dst)
     print("Done!")
 
-    print("Extracting text from .kscript files and dumping to CSV...")
-    if os.path.exists("csv"):
-        shutil.rmtree("csv")
-    os.makedirs("csv", exist_ok=True)
-    for stage in STAGES:
-        src = f"decompiled/stage{stage}.kscript"
-        dst = f"csv/stage{stage}.csv"
-        to_csv(src, dst)
-    print("Done!")
-
-    print("Extracting graphics...")
-    extract_all_graphics()
-    print("Done!")
-
-    print("Dumping font...")
-    dump_font()
-    print("Done!")
-"""
 
 if __name__ == "__main__":
     main()
