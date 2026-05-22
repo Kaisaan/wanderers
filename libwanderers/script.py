@@ -10,6 +10,7 @@ back. The on-disk layout is:
                    relative to 0x800.
 """
 
+import io
 import sys
 import json
 
@@ -525,46 +526,45 @@ opcodes = {
 }
 
 
-def bin_to_wscript(bin_file: str, wscript_file: str):
+def bin_to_wscript(bin: bytes) -> str:
     """
-    Convert a .bin file to a .wscript file
+    Convert a binary script to wscript text.
     """
+    bin_io = io.BytesIO(bin)
+    wscript_io = io.StringIO()
     script_indices = []
     script_pointers = []
 
-    fp = open(bin_file, "rb")
-    out_fp = open(wscript_file, "w", encoding="utf-8")
-
     # Parse through absolute pointer table first
     while True:
-        if fp.tell() >= 0x800:
+        if bin_io.tell() >= 0x800:
             break
-        index = int.from_bytes(fp.read(0x4), "little")
-        pointer = int.from_bytes(fp.read(0x4), "little")
+        index = int.from_bytes(bin_io.read(0x4), "little")
+        pointer = int.from_bytes(bin_io.read(0x4), "little")
         script_indices.append(index)
         script_pointers.append(pointer)
         if index == 0:
             break
 
-    fp.seek(0x800)
+    bin_io.seek(0x800)
 
     relative_pointers = []
     while True:
-        current_pointer = fp.tell()
+        current_pointer = bin_io.tell()
 
         if (current_pointer - 0x800) in script_pointers:
             i = script_pointers.index(current_pointer - 0x800)
             index = script_indices[i]
-            out_fp.write(f"LABEL_{index:06x}:\n")
+            wscript_io.write(f"LABEL_{index:06x}:\n")
         if current_pointer in relative_pointers:
             if (current_pointer - 0x800) in script_pointers:
                 sys.exit(
                     "Instruction is both a jump target and a script pointer. Everdred needs to handle this apparently"
                 )
             idx = relative_pointers.index(current_pointer)
-            out_fp.write(f"JMP_{idx:06x}\n")
+            wscript_io.write(f"JMP_{idx:06x}\n")
 
-        op_byte = fp.read(1)
+        op_byte = bin_io.read(1)
 
         if op_byte == b"":
             break
@@ -572,17 +572,76 @@ def bin_to_wscript(bin_file: str, wscript_file: str):
 
         if opcode not in opcodes:
             raise ValueError(f"Unknown opcode {hex(opcode)}")
-        op = opcodes[opcode].from_io(fp)
+        op = opcodes[opcode].from_io(bin_io)
 
         if isinstance(op, ConditionalRelativeJump):
             # Destination = (opcode_pos + 1) + skip_len; after from_io reads
-            # the 3 inline bytes, fp.tell() == opcode_pos + 4, so we subtract 3.
-            jump_target = fp.tell() - 0x3 + op.target
+            # the 3 inline bytes, bin_io.tell() == opcode_pos + 4, so we subtract 3.
+            jump_target = bin_io.tell() - 0x3 + op.target
             # Rewrite target to be an index
             op.target = len(relative_pointers)
             relative_pointers.append(jump_target)
 
-        out_fp.write(f"  {str(op)}\n")
+        wscript_io.write(f"  {str(op)}\n")
 
-    out_fp.close()
-    fp.close()
+    return wscript_io.getvalue()
+
+
+def wscript_to_bin(wscript: str) -> bytes:
+    """
+    Convert wscript text to a binary script.
+    """
+    ops = []  # list of (offset_in_opcode_stream, operation)
+    labels = []  # list of (script_index, offset) in appearance order
+    jump_positions = {}  # jump index -> offset (relative to 0x800)
+
+    current_offset = 0
+    for line in wscript.splitlines():
+        stripped = line.strip()
+        if not stripped:
+            continue
+        if stripped.startswith("LABEL_") and stripped.endswith(":"):
+            index = int(stripped[len("LABEL_") : -1], 16)
+            labels.append((index, current_offset))
+            continue
+        if stripped.startswith("JMP_"):
+            idx = int(stripped[len("JMP_") :], 16)
+            jump_positions[idx] = current_offset
+            continue
+        op = line_to_op(stripped)
+        ops.append((current_offset, op))
+        current_offset += len(op.to_bytes())
+
+    # Resolve ConditionalRelativeJump targets: jump index -> skip byte.
+    for opcode_pos, op in ops:
+        if isinstance(op, ConditionalRelativeJump):
+            if op.target not in jump_positions:
+                raise ValueError(f"Unknown jump index {hex(op.target)}")
+            target_offset = jump_positions[op.target]
+            skip_len = target_offset - (opcode_pos + 1)
+            if not 0 <= skip_len <= 0xFF:
+                raise ValueError(
+                    f"Skip length {skip_len} out of byte range at offset {hex(opcode_pos)}"
+                )
+            op.target = skip_len
+
+    # Build pointer table (0x000..0x800). An index==0 entry terminates the
+    # table on read, so we only append our own (0, 0) terminator if no
+    # index-0 label was already emitted.
+    table = bytearray()
+    has_terminator = False
+    for index, offset in labels:
+        table += index.to_bytes(4, "little")
+        table += offset.to_bytes(4, "little")
+        if index == 0:
+            has_terminator = True
+    if not has_terminator:
+        table += (0).to_bytes(8, "little")
+
+    if len(table) > 0x800:
+        raise ValueError(f"Pointer table too large: {len(table)} > 0x800")
+    table += b"\x00" * (0x800 - len(table))
+
+    for _, op in ops:
+        table += op.to_bytes()
+    return bytes(table)

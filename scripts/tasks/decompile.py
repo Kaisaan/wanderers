@@ -10,4 +10,7 @@ if __name__ == "__main__":
     if len(sys.argv) != 3:
         print("Usage: python scripts/tasks/decompile.py stage00.bin stage00.wscript")
         sys.exit(1)
-    bin_to_wscript(sys.argv[1], sys.argv[2])
+    with open(sys.argv[1], "rb") as fp:
+        wscript = bin_to_wscript(fp.read())
+    with open(sys.argv[2], "w", encoding="utf-8") as fp:
+        fp.write(wscript)
