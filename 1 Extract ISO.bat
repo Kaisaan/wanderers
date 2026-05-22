@@ -1,4 +1,5 @@
 @echo off
+set "PATH=%~dp0bin;%PATH%"
 where uv >nul 2>&1
 if %errorlevel% neq 0 (
     echo Error: uv is not installed or not in PATH
