@@ -46,9 +46,9 @@ def main():
     os.makedirs("decompiled", exist_ok=True)
     for stage in STAGES:
         print(f"Decompiling stage {stage}...")
-        src = f"DATA/script/stage{stage}.bin"
-        dst = f"decompiled/stage{stage}.wscript"
-        bin_to_wscript(src, dst)
+        src = Path(f"DATA/script/stage{stage}.bin")
+        dst = Path(f"decompiled/stage{stage}.wscript")
+        dst.write_text(bin_to_wscript(src.read_bytes()), encoding="utf-8")
     print("Done!")
 
 

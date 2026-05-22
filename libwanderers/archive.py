@@ -7,6 +7,7 @@ pointers are relative to a base of 0xFFF80. File data sits in DATA.BIN
 on 0x800-byte sector boundaries.
 """
 
+import math
 import os
 
 
@@ -14,6 +15,10 @@ BASE_PTR = 0xFFF80
 READ_SIZE = 32
 TERMINATOR = "\x00"
 SECTOR = 0x800
+
+FOLDER_TABLE_OFFSET = 0x0012D440
+FILE_TABLE_OFFSET = 0x00129800
+SLPM_NAME = "SLPM_625.32"
 
 
 def unpack(data_file):
@@ -93,3 +98,51 @@ def unpack(data_file):
             logFile.write(f"{fileName} {filePtr} {fileSize} {fileStart} {fileEnd}\n")
 
             seekAddr = seekAddr + 16
+
+
+def pack(data_file):
+    slpm = open(os.path.join("translated", SLPM_NAME), "r+b")
+
+    dataName = os.path.basename(data_file)
+    dataFile = open(os.path.join("translated", dataName), "wb")
+    dataName = dataName.rstrip(".BIN")
+    logFile = open(f"{dataName}.txt", "r", encoding="utf-8")
+
+    slpm.seek(FILE_TABLE_OFFSET)
+    startSector = 0
+
+    while True:
+        line = logFile.readline()
+        if line == "":
+            break
+        folderInfo = line.strip("\n").split()
+        folderName = folderInfo[0]
+        folderAmount = int(folderInfo[3])
+
+        for _ in range(folderAmount):
+            line = logFile.readline()
+            fileInfo = line.strip("\n").split()
+            fileName = fileInfo[0]
+            filePtr = int(fileInfo[1])
+
+            filePath = f"{dataName}{folderName}{fileName}"
+            with open(filePath, "rb") as f:
+                fileData = f.read()
+
+            fileSize = len(fileData)
+            sectorSize = math.ceil(fileSize / SECTOR)
+            padding = bytes((sectorSize * SECTOR) - fileSize)
+
+            dataFile.write(fileData)
+            dataFile.write(padding)
+
+            slpm.write((filePtr + BASE_PTR).to_bytes(4, "little"))
+            slpm.write(fileSize.to_bytes(4, "little"))
+            slpm.write(startSector.to_bytes(4, "little"))
+            slpm.write(sectorSize.to_bytes(4, "little"))
+
+            startSector += sectorSize
+
+    slpm.close()
+    dataFile.close()
+    logFile.close()
