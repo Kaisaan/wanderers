@@ -1,6 +1,6 @@
 """
 Character names mapping from the game script format.
-Index corresponds to the hexadecimal values used in VNText speaker_id.
+Index corresponds to the hexadecimal values used in TextBubble speaker_id.
 
 Source: the speaker nameplate table g_apSpeakerNameplates at vaddr
 0x0022d5d0 in SLPM_625.32 -- a 32-entry array of pointers to Shift-JIS

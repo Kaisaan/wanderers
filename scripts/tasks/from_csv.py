@@ -6,6 +6,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent.parent))
 
 from libwanderers.script import line_to_op
+from libwanderers.text import fix_ascii
 
 
 def from_csv(wscript_file, csv_file, out_wscript_file):
@@ -44,8 +45,8 @@ def from_csv(wscript_file, csv_file, out_wscript_file):
 
         if i in translations:
             op = line_to_op(stripped)
-            if op.__class__.__name__ in ("VNText", "CutsceneText"):
-                op.text = translations[i].replace("\n", "\\n")
+            if op.__class__.__name__ in ("TextBubble", "CutsceneText"):
+                op.text = fix_ascii(translations[i]).replace("\n", "\\n")
                 out.append(f"  {str(op)}\n")
             else:
                 out.append(line)

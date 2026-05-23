@@ -1,11 +1,14 @@
 __pycache__
 *.pyc
 wanderers.xml
+translated.xml
 .DS_Store
 Ys III - Wanderers from Ys (Japan).bin
 Ys III - Wanderers from Ys (Japan).cue
 DATA.txt
 extracted/
-DATA/
+/DATA/
 translated/
 decompiled/
+/csv/
+/font/

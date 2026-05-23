@@ -177,7 +177,7 @@ class WaitFrames(Operation):
     size = 2
 
 
-class VNText(Operation):
+class TextBubble(Operation):
     opcode = 0x0C
 
     def __init__(self, character_name: str, text: str):
@@ -483,7 +483,7 @@ opcodes = {
     0x09: WaitSceneReady,
     0x0A: SceneActionA,
     0x0B: WaitFrames,
-    0x0C: VNText,
+    0x0C: TextBubble,
     0x0D: CutsceneText,
     0x0E: PlaceActor,
     0x0F: MoveCharacter,

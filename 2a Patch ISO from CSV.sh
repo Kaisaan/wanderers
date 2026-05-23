@@ -16,4 +16,9 @@ if ! command -v mkpsxiso >/dev/null 2>&1; then
     exit 1
 fi
 
+if ! command -v armips >/dev/null 2>&1; then
+    echo "Error: armips is not installed or not in PATH"
+    exit 1
+fi
+
 uv run scripts/patch_iso.py

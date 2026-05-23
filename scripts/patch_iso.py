@@ -15,6 +15,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 from libwanderers.archive import pack
 from libwanderers.script import wscript_to_bin
 from tasks.from_csv import from_csv
+from tasks.patch_font import patch_font_from_atlas
 
 STAGES = ["00", "01", "02", "03", "04", "05", "06"]
 PATCHED_BIN = "Ys III - Wanderers from Ys [English Patched].bin"
@@ -78,6 +79,14 @@ def main():
 
     print("Repacking DATA.BIN...")
     pack("DATA.BIN")
+    print("Done!")
+
+    print("Applying SLPM patches with armips...")
+    subprocess.run(["armips", "asm/patch.asm"], check=True)
+    print("Done!")
+
+    print("Patching font...")
+    patch_font_from_atlas("scripts/data/font_atlas.png")
     print("Done!")
 
     print("Generating translated.xml...")

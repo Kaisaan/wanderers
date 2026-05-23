@@ -38,7 +38,7 @@ def to_csv(wscript_file, csv_file):
         op_type = op.__class__.__name__
 
         if op_type in [
-            "VNText",
+            "TextBubble",
             "CutsceneText",
         ]:
             text = op.to_object()["text"]
@@ -46,7 +46,7 @@ def to_csv(wscript_file, csv_file):
             speaker = op.to_object().get("character_name", "").replace("*", "")
             writer.writerow(
                 [
-                    f"{base_filename}||{i}||{0}",
+                    f"{base_filename}||{i}",
                     block_index,
                     speaker,
                     text,
