@@ -1,4 +1,3 @@
-.org 0x174340
 text_line_count:
     addiu v0,zero,0x1
     addiu v1,zero,0xA

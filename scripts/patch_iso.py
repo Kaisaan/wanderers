@@ -11,9 +11,11 @@ from pathlib import Path
 from xml.etree import ElementTree as ET
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 from libwanderers.archive import pack
 from libwanderers.script import wscript_to_bin
+from load_codecave_into_phdr2 import main as load_codecave_into_phdr2
 from tasks.from_csv import from_csv
 from tasks.patch_font import patch_font_from_atlas
 
@@ -83,6 +85,10 @@ def main():
 
     print("Applying SLPM patches with armips...")
     subprocess.run(["armips", "asm/patch.asm"], check=True)
+    print("Done!")
+
+    print("Loading codecave.bin into PHDR2...")
+    load_codecave_into_phdr2()
     print("Done!")
 
     print("Patching font...")

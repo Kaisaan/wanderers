@@ -1,4 +1,3 @@
-.org 0x174280
 text_max_line_width:
     daddu t2,zero,zero
     daddu v0,zero,zero

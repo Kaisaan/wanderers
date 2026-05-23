@@ -1,4 +1,3 @@
-.org 0x1743d0
 text_last_line_width:
     daddu v0,zero,zero
     addiu v1,zero,0xA
