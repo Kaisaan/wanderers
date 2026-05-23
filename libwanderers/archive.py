@@ -49,7 +49,6 @@ def unpack(data_file):
             break
 
         folderPtr = folderPtr - BASE_PTR
-        print(f"{folderPtr}\t{folderIndex}\t{filecount}\t{slpm.tell():X}")
 
         slpm.seek(folderPtr)
         folderName = slpm.read(READ_SIZE).decode(
