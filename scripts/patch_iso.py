@@ -96,7 +96,7 @@ def main(sheets: bool = False):
     print("Done!")
 
     print("Loading codecave.bin into PHDR2...")
-    load_codecave_into_phdr2()
+    load_codecave_into_phdr2(Path("scripts/data/codecave.bin"), Path("translated/SLPM_625.32"))
     print("Done!")
 
     print("Patching font...")
