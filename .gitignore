@@ -1,10 +1,14 @@
 __pycache__
 *.pyc
+codecave.bin
 wanderers.xml
 translated.xml
+wanderers_secret.json
 .DS_Store
 Ys III - Wanderers from Ys (Japan).bin
 Ys III - Wanderers from Ys (Japan).cue
+Ys III - Wanderers from Ys \[English Patched\].bin
+Ys III - Wanderers from Ys \[English Patched\].cue
 DATA.txt
 extracted/
 /DATA/
@@ -12,3 +16,4 @@ translated/
 decompiled/
 /csv/
 /font/
+graphics/orig

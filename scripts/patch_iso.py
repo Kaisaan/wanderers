@@ -1,9 +1,12 @@
 # /// script
 # requires-python = ">=3.10"
 # dependencies = [
+#     "google-api-python-client",
+#     "google-auth",
 #     "pillow",
 # ]
 # ///
+import argparse
 import os
 import subprocess
 import sys
@@ -15,8 +18,9 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 from libwanderers.archive import pack
 from libwanderers.script import wscript_to_bin
-from load_codecave_into_phdr2 import main as load_codecave_into_phdr2
+from scripts.tasks.codecave import load_codecave_into_phdr2
 from tasks.from_csv import from_csv
+from tasks.from_sheets import from_sheets
 from tasks.patch_font import patch_font_from_atlas
 
 STAGES = ["00", "01", "02", "03", "04", "05", "06"]
@@ -70,9 +74,13 @@ def generate_translated_xml(in_xml: str, out_xml: str):
     tree.write(out_xml, encoding="utf-8", xml_declaration=True)
 
 
-def main():
-    print("Applying translations from CSVs...")
-    apply_csvs("csv", "decompiled")
+def main(sheets: bool = False):
+    if sheets:
+        print("Pulling latest translations from Google Sheets...")
+        from_sheets("decompiled")
+    else:
+        print("Applying translations from CSVs...")
+        apply_csvs("csv", "decompiled")
     print("Done!")
 
     print("Compiling .wscript files to .bin...")
@@ -116,4 +124,11 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    parser = argparse.ArgumentParser(description="Patch ISO with translations")
+    parser.add_argument(
+        "--sheets",
+        action="store_true",
+        help="Pull latest translations from Google Sheets. If unset, uses local CSV files.",
+    )
+    args = parser.parse_args()
+    main(args.sheets)

@@ -1,6 +1,6 @@
 .ps2
 
-.open "scripts/data/codecave.bin", 0x1f00000
+.create "scripts/data/codecave.bin", 0x1f00000
 
 
 kerning_table:

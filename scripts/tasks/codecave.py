@@ -3,8 +3,7 @@
 # ///
 """
 Load scripts/data/codecave.bin into PHDR2 of translated/SLPM_625.32 so the
-PS2 ELF loader copies it into RAM at vaddr CODECAVE_VADDR at boot. The cave
-is then always resident — no runtime fopen/fread needed.
+PS2 ELF loader copies it into RAM at vaddr CODECAVE_VADDR at boot. 
 """
 
 from __future__ import annotations
@@ -28,7 +27,7 @@ def _round_up(n: int, align: int) -> int:
     return (n + align - 1) & ~(align - 1)
 
 
-def main() -> int:
+def load_codecave_into_phdr2() -> int:
     repo = Path(__file__).resolve().parent.parent
     slpm_path = repo / "translated" / "SLPM_625.32"
     codecave_path = repo / "scripts" / "data" / "codecave.bin"
@@ -95,4 +94,4 @@ def main() -> int:
 
 
 if __name__ == "__main__":
-    sys.exit(main())
+    sys.exit(load_codecave_into_phdr2())
