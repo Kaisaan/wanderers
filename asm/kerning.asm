@@ -10,6 +10,9 @@
 .org 0x174280
 .include "asm/functions/text_max_line_width.asm"
 
+////
+// TextBubble
+////
 // Rewire call sites from char-count helpers to pixel-width helpers.
 .org 0x174b9c
 jal text_last_line_pixel_width
@@ -40,6 +43,48 @@ move v0,s5
 // Shift book
 .org 0x174e34
 addiu a2,v0,0x0
+
+
+////
+// CutsceneText
+////
+
+// Same deal as above. Rewire call sites from char-count helpers to
+// pixel-width helpers, then drop the glyph-count * 0x14 conversions.
+.org 0x17509c
+jal text_max_line_pixel_width
+
+.org 0x1750dc
+jal text_last_line_pixel_width
+
+.org 0x1750a4
+nop
+.org 0x1750ac
+nop
+.org 0x1750b4
+move s1,v0
+
+// Drop iLastLineW * 0x14: result is already in pixels. s1 now holds the last
+// line width, used to place the continue arrow at iVar8 + s1.
+.org 0x1750e4
+nop
+.org 0x1750ec
+nop
+.org 0x1750f4
+move s1,v0
+
+// Shift book
+.org 0x1751d0
+addiu a2,v0,0x5
+
+.org 0x1751cc
+addiu a3,s0,0x26
+
+// Make the text box wider
+.org 0x1750e8
+addiu a2,s1,0x30
+
+
 
 // For spaces only advance 8px instead of previous 10
 .org 0x0010f7c4
