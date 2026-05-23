@@ -25,12 +25,25 @@ def main():
     if os.path.exists("extracted"):
         shutil.rmtree("extracted")
     print("Extracting bin...")
-    subprocess.run(
-        ["dumpsxiso", "-x", "extracted", "-s", "wanderers.xml", Path("Ys III - Wanderers from Ys (Japan).bin")],
-        stdout=subprocess.PIPE,
+    source_bin = Path("Ys III - Wanderers from Ys (Japan).bin")
+    if not source_bin.exists():
+        sys.stderr.write(f"Source bin not found: {source_bin}\n")
+        sys.exit(1)
+    result = subprocess.run(
+        ["dumpsxiso", "-x", "extracted", "-s", "wanderers.xml", source_bin],
+        capture_output=True,
         text=True,
         shell=False,
     )
+    if result.stdout:
+        sys.stdout.write(result.stdout)
+    if result.returncode != 0:
+        sys.stderr.write(
+            f"dumpsxiso failed with return code {result.returncode}\n"
+        )
+        if result.stderr:
+            sys.stderr.write(f"stderr:\n{result.stderr}\n")
+        sys.exit(result.returncode)
 
     # Copy extracted to translated
     if os.path.exists("translated"):
