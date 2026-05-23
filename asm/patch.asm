@@ -49,7 +49,7 @@ addiu a2,v0,0x0
 addiu a0,s3,0x8
 
 // Variable-width font: BuildTextCommandList per-glyph cursor advance.
-// Half-width ASCII path now indexes ascii_kerning_table[s1[0]] instead
+// Half-width ASCII path now indexes kerning_table[s1[0]] instead
 // of advancing sCursorX (s3) by a fixed 0xA. Highlighted multi-byte
 // and full-width paths keep their original +0xA / +0x14 advance,
 // implemented as two chained `addiu 0xa` so all paths fit in 12 slots.
@@ -59,9 +59,9 @@ addiu a0,s3,0x8
 bne   s5,a2,0x0010ff80
 sb    a0,0x6(a1)
 lbu   t0,0x0(s1)
-lui   t1,hi(ascii_kerning_table)
+lui   t1,hi(kerning_table)
 addu  t1,t1,t0
-lbu   t0,lo(ascii_kerning_table)(t1)
+lbu   t0,lo(kerning_table)(t1)
 b     0x0010ff90
 addu  s3,s3,t0
 

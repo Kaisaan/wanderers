@@ -31,11 +31,11 @@ calculate_str_width:
     nop
     // 0x20 is hardcoded to 0x8 by the renderer (BuildTextCommandList
     // space dispatcher at 0x10f7c4), so match that here instead of
-    // trusting ascii_kerning_table[0x20].
+    // trusting kerning_table[0x20].
     addiu at,zero,0x20
     beq t4,at,@space_case
     nop
-    li t6,ascii_kerning_table
+    li t6,kerning_table
     addu t6,t6,t4
     lbu t7,0x0(t6)
     addu v0,v0,t7

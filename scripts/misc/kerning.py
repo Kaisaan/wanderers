@@ -1,0 +1,29 @@
+import csv
+from pathlib import Path
+
+DATA_DIR = Path(__file__).parent.parent / "data"
+
+# 10px spacing by default
+table = [b"\x0a"] * 0x80
+
+with open(DATA_DIR / "kerning.csv", "r") as f:
+    reader = csv.reader(f)
+    next(reader)
+    for row in reader:
+        c = row[0]
+        c_i = ord(c)
+        if c_i > 0x80:
+            continue
+        width = int(row[1])
+
+        # Space on each side
+        # Except for brackets which are utilized as microspacing chars
+        if c not in "[]":
+            width += 2
+
+        print(repr(c))
+        print(repr(c_i))
+        table[c_i] = bytes([width])
+
+with open(DATA_DIR / "kerning.bin", "wb") as f:
+    f.write(b"".join(table))
