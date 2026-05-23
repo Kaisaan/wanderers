@@ -14,6 +14,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 from libwanderers.archive import unpack
 from libwanderers.script import bin_to_wscript
+from tasks.extract_graphic import extract_all_graphics
 
 STAGES = ["00", "01", "02", "03", "04", "05", "06"]
 
@@ -49,6 +50,10 @@ def main():
         src = Path(f"DATA/script/stage{stage}.bin")
         dst = Path(f"decompiled/stage{stage}.wscript")
         dst.write_text(bin_to_wscript(src.read_bytes()), encoding="utf-8")
+    print("Done!")
+
+    print("Extracting graphics...")
+    extract_all_graphics()
     print("Done!")
 
 
