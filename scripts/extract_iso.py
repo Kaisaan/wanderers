@@ -14,7 +14,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 from libwanderers.archive import unpack
 from libwanderers.script import bin_to_wscript
-from tasks.extract_graphic import extract_all_graphics
+from scripts.tasks.extract_graphics import extract_all_graphics
 
 STAGES = ["00", "01", "02", "03", "04", "05", "06"]
 

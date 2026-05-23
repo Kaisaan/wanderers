@@ -5,4 +5,5 @@ Modules:
     characters  -- speaker_id <-> character name mapping
     script      -- .bin script parser/decoder/encoder (wscript DSL)
     archive     -- DATA.BIN archive unpacker
+    graphics    -- _anm.bin sprite/CLUT extractor
 """
