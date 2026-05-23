@@ -8,7 +8,9 @@ WIDTH = 24
 HEIGHT = 24
 PIXEL_OFFSET = 0xD7EF0
 CLUT_OFFSET = 0x144770
-# 1160 glyphs in the original Japanese font.
+GLYPH_COUNT = 1160
+BYTES_PER_GLYPH = WIDTH * HEIGHT // 2
+CLUT_SIZE = 16 * 4
 
 TABLE_OFFSET = 0xD75D0
 
@@ -96,7 +98,53 @@ class Glyph:
         return result
 
 
-def patch_font_from_atlas(atlas_path: str, slpm_path: str = "translated/SLPM_625.32"):
+def read_original_clut(original_slpm_path: Path) -> list[list[int]]:
+    with open(original_slpm_path, "rb") as f:
+        f.seek(CLUT_OFFSET)
+        raw = f.read(CLUT_SIZE)
+    return [list(raw[i * 4 : i * 4 + 4]) for i in range(16)]
+
+
+def build_remap_lut(
+    old_palette: list[list[int]], new_palette: list[list[int]]
+) -> list[int]:
+    transparent_new = next(
+        (j for j, c in enumerate(new_palette) if c[3] == 0), None
+    )
+    lut = []
+    for old in old_palette:
+        if old[3] == 0 and transparent_new is not None:
+            lut.append(transparent_new)
+            continue
+        best_idx = 0
+        best_dist = None
+        for j, new in enumerate(new_palette):
+            d = sum((a - b) ** 2 for a, b in zip(old, new))
+            if best_dist is None or d < best_dist:
+                best_dist = d
+                best_idx = j
+        lut.append(best_idx)
+    return lut
+
+
+def remap_unpatched_glyphs(slpm, lut: list[int], start: int):
+    if lut == list(range(16)):
+        return 0
+    count = GLYPH_COUNT - start
+    slpm.seek(PIXEL_OFFSET + start * BYTES_PER_GLYPH)
+    data = bytearray(slpm.read(count * BYTES_PER_GLYPH))
+    for i, byte in enumerate(data):
+        data[i] = (lut[byte >> 4] << 4) | lut[byte & 0xF]
+    slpm.seek(PIXEL_OFFSET + start * BYTES_PER_GLYPH)
+    slpm.write(bytes(data))
+    return count
+
+
+def patch_font_from_atlas(
+    atlas_path: str,
+    slpm_path: str = "translated/SLPM_625.32",
+    original_slpm_path: str = "extracted/SLPM_625.32",
+):
     """
     Patch the game font from a single atlas PNG file into the SLPM file.
 
@@ -105,15 +153,21 @@ def patch_font_from_atlas(atlas_path: str, slpm_path: str = "translated/SLPM_625
     Args:
         atlas_path: Path to the atlas PNG file
         slpm_path: Path to the SLPM_625.32 file to patch
+        original_slpm_path: Path to the untouched SLPM, used to read the
+            original CLUT so unpatched glyphs can be remapped onto the new one.
     """
     atlas_path = Path(atlas_path)
     slpm_path = Path(slpm_path)
+    original_slpm_path = Path(original_slpm_path)
 
     if not slpm_path.exists():
         sys.exit(f"Error: {slpm_path} not found")
 
     if not atlas_path.exists():
         sys.exit(f"Error: {atlas_path} not found")
+
+    if not original_slpm_path.exists():
+        sys.exit(f"Error: {original_slpm_path} not found")
 
     atlas = Image.open(atlas_path)
 
@@ -129,6 +183,8 @@ def patch_font_from_atlas(atlas_path: str, slpm_path: str = "translated/SLPM_625
 
     print(f"Atlas contains {glyph_count} glyphs")
 
+    original_clut = read_original_clut(original_slpm_path)
+    new_palette = None
     prev_palette = None
 
     with open(slpm_path, "r+b") as slpm:
@@ -149,6 +205,7 @@ def patch_font_from_atlas(atlas_path: str, slpm_path: str = "translated/SLPM_625
 
             if i == 0:
                 # Write the palette once at the start
+                new_palette = glyph.palette
                 slpm.seek(CLUT_OFFSET)
                 palette_bytes = bytes(
                     [component for color in glyph.palette for component in color]
@@ -156,10 +213,17 @@ def patch_font_from_atlas(atlas_path: str, slpm_path: str = "translated/SLPM_625
                 slpm.write(palette_bytes)
 
             # Write the glyph pixels
-            slpm.seek(PIXEL_OFFSET + i * (WIDTH * HEIGHT // 2))
+            slpm.seek(PIXEL_OFFSET + i * BYTES_PER_GLYPH)
             slpm.write(glyph.to_bytes())
 
+        remapped = 0
+        if new_palette is not None and glyph_count < GLYPH_COUNT:
+            lut = build_remap_lut(original_clut, new_palette)
+            remapped = remap_unpatched_glyphs(slpm, lut, glyph_count)
+
     print(f"Patched {glyph_count} glyphs from {atlas_path} into {slpm_path}")
+    if remapped:
+        print(f"Remapped {remapped} unpatched glyphs onto the new CLUT")
 
 
 if __name__ == "__main__":
