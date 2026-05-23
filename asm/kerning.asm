@@ -20,13 +20,14 @@ jal text_max_line_pixel_width
 .org 0x174c68
 jal text_last_line_pixel_width
 
-// Drop iMaxLineCh * 0x14: result is already in pixels.
+// Drop iMaxLineCh * 0x14: result is already in pixels. Pad by 0x20 so the
+// pagewait book glyph fits past the last line without overflowing the bubble.
 .org 0x174bb8
 nop
 .org 0x174bc0
 nop
 .org 0x174bc8
-move s1,v0
+addiu s1,v0,0x20
 
 // Drop iLastLineW * 0x14; result is already in pixels.
 .org 0x174e14
