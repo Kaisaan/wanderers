@@ -6,6 +6,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent.parent))
 
 from libwanderers.script import line_to_op
+from libwanderers.characters import get_character_index
 
 
 def to_csv(wscript_file, csv_file):
@@ -22,6 +23,7 @@ def to_csv(wscript_file, csv_file):
 
     i = 0
     block_index = 0
+    portrait_slots = [None, None]
 
     for line in wscript_fp.readlines():
         line = line.lstrip().rstrip("\n")
@@ -37,10 +39,21 @@ def to_csv(wscript_file, csv_file):
         op = line_to_op(line)
         op_type = op.__class__.__name__
 
+        if op_type == "ShowPortrait":
+            portrait_slots[op.arg[3]] = op.arg[0]
+        elif op_type == "HidePortrait":
+            portrait_slots[op.arg[1]] = None
+        elif op_type == "HideAllPortraits":
+            portrait_slots = [None, None]
+
         if op_type in [
             "TextBubble",
             "CutsceneText",
         ]:
+            if op_type == "TextBubble":
+                speaker_id = get_character_index(op.character_name)
+                if speaker_id in portrait_slots:
+                    op_type = "VNText"
             text = op.to_object()["text"]
             text = text.replace("\\n", "\n")
             speaker = op.to_object().get("character_name", "").replace("*", "")
