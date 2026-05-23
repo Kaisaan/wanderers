@@ -1,4 +1,3 @@
-// Calculate the width of the last line
 text_last_line_pixel_width:
     daddu t8,a0,zero
     addiu t0,zero,0xFF

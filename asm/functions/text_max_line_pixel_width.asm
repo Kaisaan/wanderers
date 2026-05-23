@@ -1,4 +1,3 @@
-// Calculate the width of the largest line
 text_max_line_pixel_width:
     addiu sp,sp,-0x20
     sd ra,0x0(sp)

@@ -29,9 +29,7 @@ calculate_str_width:
     slti at,t4,0x81
     beq at,zero,@handle_multibyte
     nop
-    // 0x20 is hardcoded to 0x8 by the renderer (BuildTextCommandList
-    // space dispatcher at 0x10f7c4), so match that here instead of
-    // trusting kerning_table[0x20].
+    // 0x20 -> 0x8 to match the patched 0x10f7c4 space dispatcher.
     addiu at,zero,0x20
     beq t4,at,@space_case
     nop
@@ -46,8 +44,7 @@ calculate_str_width:
     beq zero,zero,@loop
     addiu a0,a0,0x1
 @handle_multibyte:
-    // Multi-byte glyphs render at 0x14 in BuildTextCommandList
-    // (sites 0x10f7f4 and 0x10ff80). Match that here.
+    // Multi-byte: +0x14 to match BuildTextCommandList (0x10f7f4 / 0x10ff80).
     addiu v0,v0,0x14
     beq zero,zero,@loop
     addiu a0,a0,0x2
