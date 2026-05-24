@@ -92,7 +92,7 @@ def main(sheets: bool = False):
     print("Done!")
 
     print("Applying SLPM patches with armips...")
-    subprocess.run(["armips", "asm/patch.asm"], check=True)
+    subprocess.run(["bin/armips.exe", "asm/patch.asm"], check=True)
     print("Done!")
 
     print("Loading codecave.bin into PHDR2...")
