@@ -30,12 +30,6 @@ COLOR_CODES = {
 
 
 def fix_ascii(text: str) -> str:
-    """
-    Normalize characters that Word/Docs commonly substitute for ASCII so
-    they survive shift-jis encoding. Em/en dash collapse to the JIS
-    horizontal bar (0x815C), which is the closest glyph the game's font
-    provides.
-    """
     return (
         text.replace("，", ",")
         .replace("！", "!")
@@ -46,8 +40,9 @@ def fix_ascii(text: str) -> str:
         .replace("‘", "'")
         .replace("“", '"')
         .replace("”", '"')
-        .replace("—", "―")
-        .replace("–", "―")
+        .replace("—", "ー")
+        .replace("–", "ー")
+        .replace("―", "ー")
     )
 
 
