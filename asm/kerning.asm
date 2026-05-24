@@ -49,7 +49,27 @@ addiu a2,v0,0x0
 // CutsceneText
 ////
 
-// Same deal as above. Rewire call sites from char-count helpers to
+// Bugfix: CutsceneText message length was treated as a signed
+// int which meant any message longer than 128 bytes would 
+// overflow and crash the game.
+.org 0x174fa4
+lbu s0,0x0(v0)
+
+.org 0x174f94
+li a2,0x100       // memcpy size
+
+.org 0x174fb8
+andi a2,s0,0xff   // memcpy size
+.org 0x174fbc
+nop                   
+
+.org 0x174fc8
+andi v0,s0,0xff   // XOR-decode loop count
+.org 0x174fcc
+nop                   
+
+
+// Same deal as TextBubble. Rewire call sites from char-count helpers to
 // pixel-width helpers, then drop the glyph-count * 0x14 conversions.
 .org 0x17509c
 jal text_max_line_pixel_width
