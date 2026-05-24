@@ -48,7 +48,7 @@ CHARACTERS = [
     "Soldier",             # 0x1F 兵士            / soldier
     "Unknown 1",           # 0x20 (no nameplate)
     "Unknown 2",           # 0x21 (no nameplate)
-    "Old Man",             # 0x22 (chuckling NPC seen in stage00)
+    "Fortune-teller",      # 0x22
 ]
 
 
