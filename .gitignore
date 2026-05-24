@@ -7,8 +7,7 @@ wanderers_secret.json
 .DS_Store
 Ys III - Wanderers from Ys (Japan).bin
 Ys III - Wanderers from Ys (Japan).cue
-Ys III - Wanderers from Ys \[English Patched\].bin
-Ys III - Wanderers from Ys \[English Patched\].cue
+Ys III - Wanderers from Ys \[English Patched\].*
 DATA.txt
 extracted/
 /DATA/

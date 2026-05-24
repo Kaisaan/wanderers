@@ -37,9 +37,13 @@ patch=1,EE,0081C0E0,byte,000000FF
 
 [Faster Adol (2x movement + superjump)]
 author=Everdred
-description=Must be set on game boot. 
+description=Must be set on game boot.
 patch=0,EE,00156198,word,46021080
 patch=0,EE,001561AC,word,46000000
+// 2x camera scroll so the view keeps up with 2x Adol (edge-push deltas, player_field_tick @0x156400)
+patch=0,EE,00156408,word,460318C0
+patch=0,EE,00156414,word,C42036C4
+patch=0,EE,00156418,word,46000000
 
 
 [Boot straight to menu]
