@@ -23,6 +23,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent.parent))
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 from tasks.from_csv import from_csv
+from tasks.update_asm import generate_asm
 
 SCOPES = [
     "https://www.googleapis.com/auth/drive",
@@ -96,6 +97,10 @@ def from_sheets(wscript_dir: str = "decompiled"):
 
             print(f"Applying sheet translations to {wscript_path}")
             from_csv(str(wscript_path), str(csv_path), str(wscript_path))
+    
+    print("Generating strings.asm...")
+    asm_rows = get_rows(service, "SLPM")
+    generate_asm(Path("asm/strings.asm"), asm_rows)
 
 
 if __name__ == "__main__":
