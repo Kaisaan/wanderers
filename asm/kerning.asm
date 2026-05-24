@@ -104,6 +104,10 @@ addiu a3,s0,0x26
 .org 0x1750e8
 addiu a2,s1,0x30
 
+// Recenter the box by shifting it left 16px
+.org 0x1750d4
+li v0,0x130
+
 
 
 // For spaces only advance 8px instead of previous 10
