@@ -1,0 +1,57 @@
+[Invincible]
+author=Everdred
+description=Must be set on game boot. 
+patch=0,EE,00156854,word,00000000
+
+
+[Max Gold]
+author=Everdred
+description=65535 gold
+patch=1,EE,0081C0CC,short,0000FFFF
+
+
+[64x EXP on kill]
+author=Everdred
+description=Must be set on game boot.
+patch=0,EE,00153360,word,00031980
+patch=0,EE,00153364,word,00431021
+
+
+[All items]
+author=Everdred
+description=All swords, armor, shields, rings and secondary items
+patch=1,EE,00000001,extended,00000000
+
+
+[Unlock Boss Rush on title menu]
+author=Everdred
+description=Forces the title-menu Boss Rush unlock flag (0x81BFE0) on.
+patch=1,EE,0081BFE0,word,00000001
+
+
+[Unlimited ring energy]
+author=Everdred
+description=Always 255
+patch=1,EE,0081C0E0,byte,000000FF
+
+
+[Faster Adol (2x movement)]
+author=Everdred
+description=Must be set on game boot. 
+patch=0,EE,00156198,word,46021080
+patch=0,EE,001561AC,word,46000000
+
+
+[Boot straight to menu]
+author=Everdred
+description=Skip all intro videos
+patch=0,EE,0017A834,word,00000000
+patch=0,EE,0017A844,word,00000000
+patch=0,EE,0017A894,word,00000000
+
+
+[Skip tutorial (controls tutorial)]
+author=Everdred
+description=Skips the controls tutorial
+patch=0,EE,00174460,word,03E00008
+patch=0,EE,00174464,word,00000000
