@@ -35,7 +35,7 @@ description=Always 255
 patch=1,EE,0081C0E0,byte,000000FF
 
 
-[Faster Adol (2x movement)]
+[Faster Adol (2x movement + superjump)]
 author=Everdred
 description=Must be set on game boot. 
 patch=0,EE,00156198,word,46021080
