@@ -46,7 +46,7 @@ def fix_ascii(text: str) -> str:
     )
 
 
-def read_string(io, length) -> str:
+def read_string(io, length, xor=True) -> str:
     """
     Decode a string from the game's obfuscated form.
     1. Read `length` bytes and invert each (XOR 0xFF) -- Ys III stores
@@ -55,7 +55,9 @@ def read_string(io, length) -> str:
     3. Replace FF FD XX with <sleep XX> (frame delay).
     4. Decode shift-jis, escape newlines.
     """
-    s = bytes(b ^ 0xFF for b in io.read(length))
+    s = io.read(length)
+    if xor:
+        s = bytes(b ^ 0xFF for b in s)
 
     out = s[:]
     for i in range(len(s) - 2):
@@ -71,7 +73,7 @@ def read_string(io, length) -> str:
     return decoded
 
 
-def encode_string(s):
+def encode_string(s, xor=True):
     """
     Inverse of read_string. Returns [u8 length][len bytes XOR'd 0xFF].
     """
@@ -98,5 +100,7 @@ def encode_string(s):
             encoded,
         )
 
-    obfuscated = bytes(b ^ 0xFF for b in encoded)
-    return len(obfuscated).to_bytes(1, "little") + obfuscated
+    if xor:
+        encoded = bytes(b ^ 0xFF for b in encoded)
+    
+    return len(encoded).to_bytes(1, "little") + encoded
