@@ -1,6 +1,7 @@
 """
-Ys III graphics (_anm.bin) extractor.
+Ys III graphics (_anm.bin) extractor & inserter.
 """
+import os, shutil
 
 from pathlib import Path
 from struct import pack
@@ -15,6 +16,8 @@ GBXA_MAGIC = b'GBXA2000'
 def _intlit(b: bytes) -> int:
     return int.from_bytes(b, "little")
 
+def _writeint(num, size):
+    return num.to_bytes(size, byteorder="little")
 
 def fingerprint(filepath: str | Path) -> str | None:
     """
@@ -248,5 +251,163 @@ def extract_graphics(filepath: str | Path, extract_frames: bool = False):
         extract_naxa(filepath, extract_frames)
     elif fmt == "gbxa":
         extract_gbxa(filepath)
+    else:
+        raise ValueError(f"{filepath}: unknown graphics identifier (not NAXA5010 or GBXA2000)")
+    
+def update_naxa(filepath: str | Path, insert_frames: bool = False):
+    """
+    Insert edited graphics back into an _anm.bin file.
+    
+    Args:
+        filepath: Path to the _anm.bin file
+        insert_frames: Whether to insert frame data (for files like menu00_anm.bin)
+    """
+
+    filepath = Path(filepath).resolve()
+    filedir = filepath.parent
+    filename = filepath.name
+
+    origFile = open(filepath, "rb")
+
+    filename = filename[:filename.rfind("_anm.bin")]
+
+    input_dir = filedir / filename
+
+    shutil.copy(filepath, filedir / f"{filename}_new.bin")
+
+    newFile = open(filedir / f"{filename}_new.bin", "r+b")
+
+    header = origFile.read(0x20)
+
+    newFile.seek(0)
+    newFile.write(header)
+
+    clutSize = _intlit(header[0x8:0xC])
+    clutOffset = _intlit(header[0xC:0x10])
+    pxlOffset = _intlit(header[0x10:0x14])
+    anmOffset = _intlit(header[0x14:0x18])
+
+    bpp = 0
+
+    if (clutSize == 256):
+        bpp = 8
+    elif (clutSize == 16):
+        bpp = 4
+    else:
+        exit("other BPP formats not supported yet")
+
+    palSize = 4
+
+    with open(input_dir / f"{filename}_orig.pal", "rb") as palFile:
+        clut = palFile.read(clutSize * palSize)
+
+    newFile.seek(clutOffset)
+    newFile.write(clut)
+
+    if insert_frames:
+
+        origFile.seek(anmOffset)
+        newFile.seek(anmOffset)
+        frameCount = _intlit(origFile.read(4))
+
+        anmPadding = 16 - ((frameCount * 0x4 + 0x4) % 16)
+        anmSize = (frameCount * 0x4 + 0x4) + anmPadding
+        newFile.write(_writeint(frameCount, 4))
+
+        frameOffset = anmSize
+
+        for x in range(frameCount):
+            
+            size = os.stat(input_dir / f"{filename}_frame_{x}.bin").st_size
+            newFile.write(_writeint(frameOffset, 4))
+            frameOffset = frameOffset + size
+
+        for x in range(anmPadding):
+            newFile.write(b"\xFF")
+
+        for x in range(frameCount):
+            frame = open(input_dir / f"{filename}_frame_{x}.bin", "rb")
+            frameData = frame.read()
+            newFile.write(frameData)
+            print(f"{filename}/{filename}_frame_{x}.bin written!")
+
+    origFile.seek(pxlOffset + 8) # Read the first image offset to calculate how many images there are
+    newFile.seek(pxlOffset)
+
+    spriteCount = _intlit(origFile.read(4)) // 0x10 # Each sprite entry is 16 bytes long
+
+    dataOffset = spriteCount * 0x10
+    sprOffset = dataOffset
+
+    padding = 0
+
+    for x in range(spriteCount):
+        graphic = Image.open(input_dir / f"{filename}_{x}.png", "r")
+        size = graphic.width * graphic.height
+        if bpp == 4:
+            size = size // 2
+            if (size % 16 != 0):
+                padding = size % 16
+        
+        if insert_frames:
+            newFile.write(_writeint(graphic.height, 2))
+            newFile.write(_writeint(graphic.width, 2))
+        
+        else:
+            newFile.read(4)
+        newFile.write(_writeint(graphic.height, 2))
+        newFile.write(_writeint(graphic.width, 2))
+
+        newFile.write(_writeint(sprOffset, 4))
+        newFile.write(_writeint(x, 4))
+        sprOffset = sprOffset + size + padding
+
+    for x in range(spriteCount):
+        graphic = Image.open(input_dir / f"{filename}_{x}.png", "r")
+
+        data = list(graphic.getdata())
+        
+        binData = b""
+        if (bpp == 8):
+            for i in range(len(data)):
+                byte = data[i].to_bytes(1)
+                binData = binData + byte
+        elif (bpp == 4):
+            for i in range(0, len(data), 2):
+                byte1 = data[i]
+                byte2 = data[i+1]
+                if byte1 == 16:
+                    byte1 = 1
+                if byte2 == 16:
+                    byte2 = 1
+                byte2 = byte2 << 4
+                byte = byte2 + byte1
+                byte = byte.to_bytes(1)
+                binData = binData + byte
+
+        if x != (spriteCount - 1):          # No need to add padding to the last sprite
+            for i in range(padding):
+                binData = binData + b"\xFF"
+        
+        newFile.write(binData)
+
+        print(f"{filename}/{filename}_{x}.png written!")
+
+    origFile.close()
+    newFile.close()
+    
+    print(f"{filename}_new.bin saved!")
+
+def insert_graphics(filepath: str | Path, extract_frames: bool = False):
+    """
+    Fingerprint the file by its 8-byte identifier and dispatch to the
+    matching format-specific extractor. extract_frames is ignored for
+    GBXA files (no animation table).
+    """
+    fmt = fingerprint(filepath)
+    if fmt == "naxa":
+        update_naxa(filepath, extract_frames)
+    elif fmt == "gbxa":
+        raise ValueError(f"{filepath}: GBXA2000 file updating not currently supported")
     else:
         raise ValueError(f"{filepath}: unknown graphics identifier (not NAXA5010 or GBXA2000)")

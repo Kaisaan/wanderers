@@ -22,6 +22,7 @@ from scripts.tasks.codecave import load_codecave_into_phdr2
 from tasks.from_csv import from_csv
 from tasks.from_sheets import from_sheets
 from tasks.patch_font import patch_font_from_atlas
+from tasks.update_graphics import insert_all_graphics
 
 STAGES = ["00", "01", "02", "03", "04", "05", "06"]
 PATCHED_BIN = "Ys III - Wanderers from Ys [English Patched].bin"
@@ -85,6 +86,10 @@ def main(sheets: bool = False):
 
     print("Compiling .wscript files to .bin...")
     compile_all("decompiled", "DATA/script")
+    print("Done!")
+
+    print("Inserting graphics...")
+    insert_all_graphics()
     print("Done!")
 
     print("Repacking DATA.BIN...")
