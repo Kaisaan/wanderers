@@ -20,7 +20,6 @@ STAGES = ["00", "01", "02", "03", "04", "05", "06"]
 
 
 def main():
-    print("Copy the original .iso next to this script and rename it to lostkefin.iso")
 
     if os.path.exists("extracted"):
         shutil.rmtree("extracted")
