@@ -7,7 +7,7 @@
 # ]
 # ///
 import argparse
-import os
+import shutil
 import subprocess
 import sys
 from pathlib import Path
@@ -106,6 +106,10 @@ def main(sheets: bool = False):
 
     print("Patching font...")
     patch_font_from_atlas("scripts/data/font_atlas.png")
+    print("Done!")
+
+    print("Replacing OPENING...")
+    shutil.copy("scripts/data/OPENING.PSS", "translated/MOVIE")
     print("Done!")
 
     print("Generating translated.xml...")
