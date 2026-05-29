@@ -2,7 +2,8 @@
 Repo for translating Ys III: Wanderers From Ys on PS2
 
 # Overview
-If you want updates be sure to [join the Discord server](https://discord.gg/JnqvyDryen)
+If you want updates be sure to [join the Discord server](https://discord.gg/JnqvyDryen)  
+[Link to translation spreadsheets](https://docs.google.com/spreadsheets/d/10h_j4RCCrUQtMjdgoMcrJcWS6CIDrvKm5Dv0k0JE2iY/edit?usp=sharing)
 
 # Hacking Notes
 - Game uses the same graphics format as Lost Kefin (NAXA5010 header)
