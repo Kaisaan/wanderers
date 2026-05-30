@@ -11,6 +11,7 @@ def generate_asm(strings_filename, rows):
                 continue
             en = row[2]
             en = fix_ascii(en)
+            en = en.replace("\n", "\\n")
 
             label = row[3]
             label = "L" + label
