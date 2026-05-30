@@ -4,6 +4,7 @@
 .open "translated/SLPM_625.32", 0xfff80
 
 .include "asm/kerning.asm"
+.include "asm/pointers.asm"
 
 .close
 

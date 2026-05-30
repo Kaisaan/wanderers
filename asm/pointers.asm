@@ -1,5 +1,7 @@
 .include "asm/strings.asm", "UTF8"
 
+// Offset equ 0xFFF80
+
 // Music pointers
 
 .orga 0x00136E74
@@ -57,3 +59,66 @@
 @L15AE00: .asciiz L15AE00
 @L15AE10: .asciiz L15AE10
 @L15AE20: .asciiz L15AE20
+
+// Character Names
+
+.orga 0x14DFA8
+
+@L14DFA8: .asciiz L14DFA8
+@L14DFB0: .asciiz L14DFB0
+@L14DFB8: .asciiz L14DFB8
+@L14DFC8: .asciiz L14DFC8
+@L14DFD0: .asciiz L14DFD0
+@L14DFE0: .asciiz L14DFE0
+@L14DFE8: .asciiz L14DFE8
+@L14DFF0: .asciiz L14DFF0
+@L14E000: .asciiz L14E000
+@L14E010: .asciiz L14E010
+@L14E018: .asciiz L14E018
+@L14E028: .asciiz L14E028
+@L14E038: .asciiz L14E038
+@L14E048: .asciiz L14E048
+@L14E058: .asciiz L14E058
+@L14E060: .asciiz L14E060
+@L14E068: .asciiz L14E068
+@L14E078: .asciiz L14E078
+@L14E080: .asciiz L14E080
+@L14E088: .asciiz L14E088
+
+// Character Name pointers
+
+.orga 0x12D650
+
+.dw @L14DFA8
+.dw @L14DFB0
+.dw @L14DFB8
+.dw @L14DFC8
+.dw @L14DFD0
+.dw @L14DFE0
+.dw @L14DFE8
+.dw @L14DFE8
+.dw @L14DFF0
+.dw @L14DFE8
+.dw @L14E000
+.dw @L14DFE0
+.dw @L14E010
+.dw @L14E018
+.dw @L14E028
+.dw @L14E038
+.dw @L14E048
+.dw @L14E058
+.dw @L14E060
+.dw @L14E010
+.dw @L14E010
+.dw @L14E010
+.dw @L14E010
+.dw @L14E068
+.dw @L14E078
+.dw @L14E080
+.dw @L14DFE8
+.dw @L14DFE8
+.dw @L14DFE8
+.dw @L14DFE0
+.dw @L14DFE0
+.dw @L14E088
+
