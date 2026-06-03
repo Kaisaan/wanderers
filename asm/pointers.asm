@@ -188,12 +188,726 @@
 @L14E480: .str L14E480
 @L14E488: .str L14E488
 
-// Hardcoded stuff (I cant find pointers)
+// Tutorial Text Pointers
 
-.orga 0x14E490 :: @L14E490: .str L14E490
-.orga 0x14E4A0 :: @L14E4A0: .str L14E4A0
-.orga 0x14E4A8 :: @L14E4A8: .str L14E4A8
-.orga 0x14E4B0 :: @L14E4B0: .str L14E4B0
+.orga 0x134C90
+
+.dw @L14F1A0
+.dw @L14F1E0
+.dw @L14F250
+.dw @L14F2C0
+.dw @L14F320
+
+
+
+// Pause Menu Text Pointers
+
+.orga 0x134D30
+
+.dw @L14F550
+.dw @L14F558
+.dw @L14F560
+.dw @L14F550
+.dw @L14F568
+.dw @L14F560
+
+// Pause Menu Text
+
+.orga 0x14F550
+
+@L14F550: .str L14F550
+@L14F558: .str L14F558
+@L14F560: .str L14F560
+@L14F568: .str L14F568
+
+// Menu Pointers
+
+.orga 0x1351B0
+
+.dw @L14F5C0
+.dw @L14F5E0
+.dw @L14F600
+.dw @L14F620
+.dw @L14F640
+.dw @L14F660
+.dw @L14F680
+.dw @L14F6A0
+.dw @L14F6B8
+.dw @L14F6C0
+.dw @L14F6D0
+.skip 4
+.dw @L14F6D8
+.dw @L14F6E0
+.dw @L14F6E8
+
+// Menu Text
+
+.orga 0x14F5C0
+
+@L14F5C0: .str L14F5C0
+@L14F5E0: .str L14F5E0
+@L14F600: .str L14F600
+@L14F620: .str L14F620
+@L14F640: .str L14F640
+@L14F660: .str L14F660
+@L14F680: .str L14F680
+@L14F6A0: .str L14F6A0
+@L14F6B8: .str L14F6B8
+@L14F6C0: .str L14F6C0
+@L14F6D0: .str L14F6D0
+@L14F6D8: .str L14F6D8
+@L14F6E0: .str L14F6E0
+@L14F6E8: .str L14F6E8
+
+// Item Pointers
+
+.orga 0x135240
+
+.dw @L14F740
+.dw @L14F760
+.dw @L14F7C0
+.dw @L14F820
+.dw @L14F880
+.dw @L14F8E0
+.dw @L14F950
+.dw @L14F970
+.dw @L14F9C0
+.dw @L14FA30
+.dw @L14FAA0
+.dw @L14FB10
+.dw @L14FB80
+.dw @L14FBF0
+.dw @L14FC60
+.dw @L14FCD0
+.dw @L14FD40
+.dw @L14FDB0
+.dw @L14FE00
+.dw @L14FE70
+.dw @L14FEE0
+.dw @L14FF50
+.dw @L14FFB0
+.dw @L150020
+.dw @L150080
+.dw @L1500F0
+.dw @L150160
+.dw @L1501D0
+.dw @L150240
+.dw @L1502B0
+.dw @L150310
+.dw @L150380
+.dw @L1503F0
+.dw @L150450
+.dw @L1504B0
+.dw @L150520
+.dw @L150590
+.dw @L1505D0
+.dw @L150620
+.dw @L150660
+.dw @L1506B0
+.dw @L1506F0
+.dw @L150740
+.dw @L1507A0
+.dw @L1507F0
+.dw @L150840
+.dw @L1508A0
+.dw @L1508E0
+.dw @L150930
+.dw @L150980
+.dw @L1509F0
+.dw @L150A20
+.dw @L150A80
+.dw @L150A90
+.dw @L150AA0
+.dw @L150AB0
+.dw @L150AC0
+.dw @L150AD8
+.dw @L150AE8
+.dw @L150AF8
+.dw @L150B10
+.dw @L150B28
+.dw @L150B38
+.dw @L150B50
+.dw @L150B68
+.dw @L150B78
+.dw @L150B88
+.dw @L150B98
+.dw @L150BA8
+.dw @L150BB8
+.dw @L150BC8
+.dw @L150BD8
+.dw @L150BE8
+.dw @L150BF0
+.dw @L150C00
+.dw @L150C10
+.dw @L150C20
+.dw @L150C30
+.dw @L150C40
+.dw @L150C50
+.dw @L150C60
+.dw @L150C70
+.dw @L150C80
+.dw @L150C98
+.dw @L150CA8
+.dw @L150CB8
+.dw @L150CC8
+.dw @L150CD8
+.dw @L150CE8
+.dw @L150CF8
+.dw @L150D08
+.dw @L150D18
+.dw @L150D28
+.skip 12
+.dw @L150D38
+.dw @L150D38
+.dw @L150D48
+.dw @L150D58
+.dw @L150D68
+
+// Shop Name Pointers
+
+.orga 0x1353E4 :: .dw @L150D78
+.orga 0x13543C :: .dw @L150D80
+
+// Item Text
+
+.orga 0x14F740
+
+@L14F740: .str L14F740
+@L14F760: .str L14F760
+@L14F7C0: .str L14F7C0
+@L14F820: .str L14F820
+@L14F880: .str L14F880
+@L14F8E0: .str L14F8E0
+@L14F950: .str L14F950
+@L14F970: .str L14F970
+@L14F9C0: .str L14F9C0
+@L14FA30: .str L14FA30
+@L14FAA0: .str L14FAA0
+@L14FB10: .str L14FB10
+@L14FB80: .str L14FB80
+@L14FBF0: .str L14FBF0
+@L14FC60: .str L14FC60
+@L14FCD0: .str L14FCD0
+@L14FD40: .str L14FD40
+@L14FDB0: .str L14FDB0
+@L14FE00: .str L14FE00
+@L14FE70: .str L14FE70
+@L14FEE0: .str L14FEE0
+@L14FF50: .str L14FF50
+@L14FFB0: .str L14FFB0
+@L150020: .str L150020
+@L150080: .str L150080
+@L1500F0: .str L1500F0
+@L150160: .str L150160
+@L1501D0: .str L1501D0
+@L150240: .str L150240
+@L1502B0: .str L1502B0
+@L150310: .str L150310
+@L150380: .str L150380
+@L1503F0: .str L1503F0
+@L150450: .str L150450
+@L1504B0: .str L1504B0
+@L150520: .str L150520
+@L150590: .str L150590
+@L1505D0: .str L1505D0
+@L150620: .str L150620
+@L150660: .str L150660
+@L1506B0: .str L1506B0
+@L1506F0: .str L1506F0
+@L150740: .str L150740
+@L1507A0: .str L1507A0
+@L1507F0: .str L1507F0
+@L150840: .str L150840
+@L1508A0: .str L1508A0
+@L1508E0: .str L1508E0
+@L150930: .str L150930
+@L150980: .str L150980
+@L1509F0: .str L1509F0
+@L150A20: .str L150A20
+@L150A80: .str L150A80
+@L150A90: .str L150A90
+@L150AA0: .str L150AA0
+@L150AB0: .str L150AB0
+@L150AC0: .str L150AC0
+@L150AD8: .str L150AD8
+@L150AE8: .str L150AE8
+@L150AF8: .str L150AF8
+@L150B10: .str L150B10
+@L150B28: .str L150B28
+@L150B38: .str L150B38
+@L150B50: .str L150B50
+@L150B68: .str L150B68
+@L150B78: .str L150B78
+@L150B88: .str L150B88
+@L150B98: .str L150B98
+@L150BA8: .str L150BA8
+@L150BB8: .str L150BB8
+@L150BC8: .str L150BC8
+@L150BD8: .str L150BD8
+@L150BE8: .str L150BE8
+@L150BF0: .str L150BF0
+@L150C00: .str L150C00
+@L150C10: .str L150C10
+@L150C20: .str L150C20
+@L150C30: .str L150C30
+@L150C40: .str L150C40
+@L150C50: .str L150C50
+@L150C60: .str L150C60
+@L150C70: .str L150C70
+@L150C80: .str L150C80
+@L150C98: .str L150C98
+@L150CA8: .str L150CA8
+@L150CB8: .str L150CB8
+@L150CC8: .str L150CC8
+@L150CD8: .str L150CD8
+@L150CE8: .str L150CE8
+@L150CF8: .str L150CF8
+@L150D08: .str L150D08
+@L150D18: .str L150D18
+@L150D28: .str L150D28
+@L150D38: .str L150D38
+@L150D48: .str L150D48
+@L150D58: .str L150D58
+@L150D68: .str L150D68
+
+// Shop Name Text
+
+@L150D78: .str L150D78
+@L150D80: .str L150D80
+
+// Shop Text Pointers
+
+.orga 0x135490
+
+.dw @L150D90
+.dw @L150DB0
+.dw @L150DD0
+.dw @L150E20
+.dw @L150E50
+.dw @L150E70
+.dw @L150E90
+.dw @L150EE0
+.dw @L150F00
+.dw @L150E50
+.dw @L150F18
+.dw @L150F30
+.dw @L150F60
+.dw @L150FB0
+.skip 8
+.dw @L151000
+.dw @L151020
+.dw @L151040
+.dw @L151060
+.dw @L151080
+.dw @L1510A0
+.dw @L1510F0
+.dw @L151140
+.dw @L151190
+.dw @L150F00
+.dw @L1511A0
+.dw @L1511C0
+
+// Shop Text
+
+.orga 0x150D90
+
+@L150D90: .str L150D90
+@L150DB0: .str L150DB0
+@L150DD0: .str L150DD0
+@L150E20: .str L150E20
+@L150E50: .str L150E50
+@L150E70: .str L150E70
+@L150E90: .str L150E90
+@L150EE0: .str L150EE0
+@L150F00: .str L150F00
+@L150F18: .str L150F18
+@L150F30: .str L150F30
+@L150F60: .str L150F60
+@L150FB0: .str L150FB0
+@L151000: .str L151000
+@L151020: .str L151020
+@L151040: .str L151040
+@L151060: .str L151060
+@L151080: .str L151080
+@L1510A0: .str L1510A0
+@L1510F0: .str L1510F0
+@L151140: .str L151140
+@L151190: .str L151190
+@L1511A0: .str L1511A0
+@L1511C0: .str L1511C0
+
+// What Pointers
+
+.orga 0x135524
+
+.dw @L151228 :: .skip 20
+.dw @L151230 :: .skip 20
+.dw @L151240 :: .skip 20
+.dw @L151248 :: .skip 20
+.dw @L151228 :: .skip 20
+.dw @L151228 :: .skip 20
+.dw @L151258 :: .skip 20
+.dw @L151260 :: .skip 20
+.dw @L151228 :: .skip 20
+.dw @L151228 :: .skip 20
+.dw @L151270 :: .skip 20
+.dw @L151278 :: .skip 20
+.dw @L151228 :: .skip 20
+.dw @L151228 :: .skip 20
+.dw @L151288 :: .skip 20
+.dw @L151298 :: .skip 20
+.dw @L151228 :: .skip 20
+.dw @L151228 :: .skip 20
+.dw @L151228 :: .skip 20
+.dw @L1512A8 :: .skip 20
+.dw @L1512B8 :: .skip 20
+.dw @L151228 :: .skip 20
+.dw @L151228 :: .skip 20
+.dw @L1512C8 :: .skip 20
+.dw @L1512D8 :: .skip 20
+.dw @L151228 :: .skip 20
+.dw @L151228 :: .skip 20
+.dw @L1512E8 :: .skip 20
+.dw @L1512F8 :: .skip 20
+.dw @L151228 :: .skip 20
+.dw @L151228 :: .skip 20
+.dw @L151308 :: .skip 20
+.dw @L151310 :: .skip 20
+.dw @L151228 :: .skip 20
+.dw @L151228 :: .skip 20
+.dw @L151228 :: .skip 20
+.dw @L151330 :: .skip 20
+.dw @L151340 :: .skip 20
+.dw @L151360 :: .skip 20
+.dw @L151370 :: .skip 20
+.dw @L151228 :: .skip 20
+.dw @L151228 :: .skip 20
+.dw @L151380 :: .skip 20
+.dw @L151390 :: .skip 20
+.dw @L151228 :: .skip 20
+.dw @L151228 :: .skip 20
+.dw @L151228 :: .skip 20
+.dw @L1513A0 :: .skip 20
+.dw @L1513B0 :: .skip 20
+.dw @L151228 :: .skip 20
+.dw @L151228 :: .skip 20
+.dw @L1513C0 :: .skip 20
+.dw @L1513C8 :: .skip 20
+.dw @L1513D8 :: .skip 20
+.dw @L1513E8 :: .skip 20
+.dw @L151228 :: .skip 20
+.dw @L151228 :: .skip 20
+.dw @L151228 :: .skip 20
+.dw @L1513F8 :: .skip 20
+.dw @L151408 :: .skip 20
+.dw @L151418 :: .skip 20
+.dw @L151428 :: .skip 20
+.dw @L151438 :: .skip 20
+.dw @L151448 :: .skip 20
+.dw @L151458 :: .skip 20
+.dw @L151228 :: .skip 20
+.dw @L151228 :: .skip 20
+.dw @L151228 :: .skip 20
+.dw @L151460 :: .skip 20
+.dw @L151470 :: .skip 20
+.dw @L151478 :: .skip 20
+.dw @L151488 :: .skip 20
+.dw @L151498 :: .skip 20
+.dw @L1514A8 :: .skip 20
+.dw @L1514B8 :: .skip 20
+.dw @L151228 :: .skip 20
+.dw @L151228 :: .skip 20
+.dw @L1514C8 :: .skip 20
+.dw @L1514D8 :: .skip 20
+.dw @L1514E8 :: .skip 20
+.dw @L1514F8 :: .skip 20
+.dw @L151510 :: .skip 20
+.dw @L151528 :: .skip 20
+.dw @L151228 :: .skip 20
+.dw @L151228 :: .skip 20
+.dw @L151228 :: .skip 20
+.dw @L151538 :: .skip 20
+.dw @L151548 :: .skip 20
+.dw @L151558 :: .skip 20
+.dw @L151568 :: .skip 20
+.dw @L151228 :: .skip 20
+.dw @L151228 :: .skip 20
+.dw @L151228 :: .skip 20
+.dw @L151578 :: .skip 20
+.dw @L151580 :: .skip 20
+.dw @L151598 :: .skip 20
+.dw @L1515A8 :: .skip 20
+.dw @L1515B8 :: .skip 20
+.dw @L1515C8 :: .skip 20
+.dw @L1515D0 :: .skip 20
+.dw @L151228 :: .skip 20
+.dw @L151228 :: .skip 20
+.dw @L151228 :: .skip 20
+.dw @L1515E8 :: .skip 20
+.dw @L1515F8 :: .skip 20
+.dw @L151608 :: .skip 20
+.dw @L151618 :: .skip 20
+.dw @L151228 :: .skip 20
+.dw @L151228 :: .skip 20
+.dw @L151628 :: .skip 20
+.dw @L151630 :: .skip 20
+.dw @L151228 :: .skip 20
+.dw @L151228 :: .skip 20
+.dw @L151228 :: .skip 20
+.dw @L151640 :: .skip 20
+.dw @L151658 :: .skip 20
+.dw @L151670 :: .skip 20
+.dw @L151228 :: .skip 20
+.dw @L151228 :: .skip 20
+.dw @L151228 :: .skip 20
+.dw @L151690 :: .skip 20
+.dw @L1516A0 :: .skip 20
+.dw @L151228 :: .skip 20
+.dw @L151228 :: .skip 20
+.dw @L1516B8 :: .skip 20
+.dw @L1516C0 :: .skip 20
+.dw @L151228 :: .skip 20
+.dw @L151228 :: .skip 20
+.dw @L151228 :: .skip 20
+
+// Ending Text Pointers
+
+.orga 0x136130
+
+.dw @L1516E0
+.dw @L151700
+.dw @L151720
+.skip 4
+.dw @L151740
+.dw @L151770
+.dw @L1517A0
+.dw @L1517D0
+.dw @L151800
+.skip 4
+.dw @L151820
+.dw @L151840
+.dw @L151860
+.dw @L151880
+.dw @L1518B0
+.dw @L1518D0
+.skip 4
+.dw @L151900
+.dw @L151920
+.dw @L151940
+.dw @L151960
+.dw @L151990
+.dw @L1519C0
+.skip 4
+.dw @L1519E0
+.dw @L151A10
+.dw @L151A40
+.skip 4
+.dw @L151A80
+.dw @L151AA0
+.skip 4
+.dw @L151AD0
+.dw @L151AF0
+.skip 64
+.dw @L151B10
+.skip 8
+.dw @L1516E0
+.dw @L151700
+.dw @L151720
+.skip 4
+.dw @L151740
+.dw @L151770
+.dw @L1517A0
+.dw @L1517D0
+.dw @L151800
+.skip 4
+.dw @L151820
+.dw @L151840
+.dw @L151860
+.dw @L151880
+.skip 4
+.dw @L151900
+.dw @L151920
+.dw @L151940
+.dw @L151960
+.dw @L151990
+.dw @L1519C0
+.skip 4
+.dw @L1519E0
+.dw @L151A10
+.dw @L151A40
+.skip 4
+.dw @L151A80
+.dw @L151AA0
+.skip 4
+.dw @L151AD0
+.dw @L151AF0
+.skip 64
+.dw @L151B10
+.dw @L1516E0
+.dw @L151700
+.dw @L151720
+.skip 4
+.dw @L151740
+.dw @L151770
+.dw @L1517A0
+.dw @L1517D0
+.dw @L151800
+.skip 4
+.dw @L151B20
+.dw @L151B50
+.dw @L151B70
+.skip 4
+.dw @L151900
+.dw @L151920
+.dw @L151940
+.dw @L151960
+.dw @L151990
+.dw @L1519C0
+.skip 4
+.dw @L1519E0
+.dw @L151A10
+.dw @L151A40
+.skip 4
+.dw @L151A80
+.dw @L151AA0
+.skip 4
+.dw @L151AD0
+.dw @L151AF0
+.skip 64
+.dw @L151B10
+
+// Credits Text
+
+.orga 0x151228
+
+@L151228: .str L151228
+@L151230: .str L151230
+@L151240: .str L151240
+@L151248: .str L151248
+@L151258: .str L151258
+@L151260: .str L151260
+@L151270: .str L151270
+@L151278: .str L151278
+@L151288: .str L151288
+@L151298: .str L151298
+@L1512A8: .str L1512A8
+@L1512B8: .str L1512B8
+@L1512C8: .str L1512C8
+@L1512D8: .str L1512D8
+@L1512E8: .str L1512E8
+@L1512F8: .str L1512F8
+@L151308: .str L151308
+@L151310: .str L151310
+@L151330: .str L151330
+@L151340: .str L151340
+@L151360: .str L151360
+@L151370: .str L151370
+@L151380: .str L151380
+@L151390: .str L151390
+@L1513A0: .str L1513A0
+@L1513B0: .str L1513B0
+@L1513C0: .str L1513C0
+@L1513C8: .str L1513C8
+@L1513D8: .str L1513D8
+@L1513E8: .str L1513E8
+@L1513F8: .str L1513F8
+@L151408: .str L151408
+@L151418: .str L151418
+@L151428: .str L151428
+@L151438: .str L151438
+@L151448: .str L151448
+@L151458: .str L151458
+@L151460: .str L151460
+@L151470: .str L151470
+@L151478: .str L151478
+@L151488: .str L151488
+@L151498: .str L151498
+@L1514A8: .str L1514A8
+@L1514B8: .str L1514B8
+@L1514C8: .str L1514C8
+@L1514D8: .str L1514D8
+@L1514E8: .str L1514E8
+@L1514F8: .str L1514F8
+@L151510: .str L151510
+@L151528: .str L151528
+@L151538: .str L151538
+@L151548: .str L151548
+@L151558: .str L151558
+@L151568: .str L151568
+@L151578: .str L151578
+@L151580: .str L151580
+@L151598: .str L151598
+@L1515A8: .str L1515A8
+@L1515B8: .str L1515B8
+@L1515C8: .str L1515C8
+@L1515D0: .str L1515D0
+@L1515E8: .str L1515E8
+@L1515F8: .str L1515F8
+@L151608: .str L151608
+@L151618: .str L151618
+@L151628: .str L151628
+@L151630: .str L151630
+@L151640: .str L151640
+@L151658: .str L151658
+@L151670: .str L151670
+@L151690: .str L151690
+@L1516A0: .str L1516A0
+@L1516B8: .str L1516B8
+@L1516C0: .str L1516C0
+
+// Ending Text
+
+@L1516E0: .str L1516E0
+@L151700: .str L151700
+@L151720: .str L151720
+@L151740: .str L151740
+@L151770: .str L151770
+@L1517A0: .str L1517A0
+@L1517D0: .str L1517D0
+@L151800: .str L151800
+@L151820: .str L151820
+@L151840: .str L151840
+@L151860: .str L151860
+@L151880: .str L151880
+@L1518B0: .str L1518B0
+@L1518D0: .str L1518D0
+@L151900: .str L151900
+@L151920: .str L151920
+@L151940: .str L151940
+@L151960: .str L151960
+@L151990: .str L151990
+@L1519C0: .str L1519C0
+@L1519E0: .str L1519E0
+@L151A10: .str L151A10
+@L151A40: .str L151A40
+@L151A80: .str L151A80
+@L151AA0: .str L151AA0
+@L151AD0: .str L151AD0
+@L151AF0: .str L151AF0
+@L151B10: .str L151B10
+@L151B20: .str L151B20
+@L151B50: .str L151B50
+@L151B70: .str L151B70
+
+// Put text here (seems to be unused)
+
+.orga 0x145A88
+
+// Tutorial Text
+
+@L14F1A0: .str L14F1A0
+@L14F1E0: .str L14F1E0
+@L14F250: .str L14F250
+@L14F2C0: .str L14F2C0
+@L14F320: .str L14F320
+
+// Hardcoded stuff (Has no pointers)
+
+.orga 0x14E490 :: @L14E490: .str L14E490 // Yes   No Text
+.orga 0x14E4A0 :: @L14E4A0: .str L14E4A0 // Ha (unknown)
+.orga 0x14E4A8 :: @L14E4A8: .str L14E4A8 // A (unknown)
+.orga 0x14E4B0 :: @L14E4B0: .str L14E4B0 // No Data
+
 .orga 0x14E4C0 :: @L14E4C0: .str L14E4C0
 .orga 0x14E4F0 :: @L14E4F0: .str L14E4F0
 .orga 0x14E520 :: @L14E520: .str L14E520
@@ -224,266 +938,16 @@
 .orga 0x14EE80 :: @L14EE80: .str L14EE80
 .orga 0x14EE88 :: @L14EE88: .str L14EE88
 .orga 0x14EEA0 :: @L14EEA0: .str L14EEA0
-.orga 0x14F1A0 :: @L14F1A0: .str L14F1A0
-.orga 0x14F1E0 :: @L14F1E0: .str L14F1E0
-.orga 0x14F250 :: @L14F250: .str L14F250
-.orga 0x14F2C0 :: @L14F2C0: .str L14F2C0
-.orga 0x14F320 :: @L14F320: .str L14F320
-.orga 0x14F550 :: @L14F550: .str L14F550
-.orga 0x14F558 :: @L14F558: .str L14F558
-.orga 0x14F560 :: @L14F560: .str L14F560
-.orga 0x14F568 :: @L14F568: .str L14F568
+
 .orga 0x14F570 :: @L14F570: .str L14F570
 .orga 0x14F578 :: @L14F578: .str L14F578
 .orga 0x14F5A8 :: @L14F5A8: .str L14F5A8
 .orga 0x14F5B0 :: @L14F5B0: .str L14F5B0
-.orga 0x14F5C0 :: @L14F5C0: .str L14F5C0
-.orga 0x14F5E0 :: @L14F5E0: .str L14F5E0
-.orga 0x14F600 :: @L14F600: .str L14F600
-.orga 0x14F620 :: @L14F620: .str L14F620
-.orga 0x14F640 :: @L14F640: .str L14F640
-.orga 0x14F660 :: @L14F660: .str L14F660
-.orga 0x14F680 :: @L14F680: .str L14F680
-.orga 0x14F6A0 :: @L14F6A0: .str L14F6A0
-.orga 0x14F6B8 :: @L14F6B8: .str L14F6B8
-.orga 0x14F6C0 :: @L14F6C0: .str L14F6C0
-.orga 0x14F6D0 :: @L14F6D0: .str L14F6D0
-.orga 0x14F6D8 :: @L14F6D8: .str L14F6D8
-.orga 0x14F6E0 :: @L14F6E0: .str L14F6E0
-.orga 0x14F6E8 :: @L14F6E8: .str L14F6E8
-.orga 0x14F6F0 :: @L14F6F0: .str L14F6F0
-.orga 0x14F6F8 :: @L14F6F8: .str L14F6F8
-.orga 0x14F740 :: @L14F740: .str L14F740
-.orga 0x14F760 :: @L14F760: .str L14F760
-.orga 0x14F7C0 :: @L14F7C0: .str L14F7C0
-.orga 0x14F820 :: @L14F820: .str L14F820
-.orga 0x14F880 :: @L14F880: .str L14F880
-.orga 0x14F8E0 :: @L14F8E0: .str L14F8E0
-.orga 0x14F950 :: @L14F950: .str L14F950
-.orga 0x14F970 :: @L14F970: .str L14F970
-.orga 0x14F9C0 :: @L14F9C0: .str L14F9C0
-.orga 0x14FA30 :: @L14FA30: .str L14FA30
-.orga 0x14FAA0 :: @L14FAA0: .str L14FAA0
-.orga 0x14FB10 :: @L14FB10: .str L14FB10
-.orga 0x14FB80 :: @L14FB80: .str L14FB80
-.orga 0x14FBF0 :: @L14FBF0: .str L14FBF0
-.orga 0x14FC60 :: @L14FC60: .str L14FC60
-.orga 0x14FCD0 :: @L14FCD0: .str L14FCD0
-.orga 0x14FD40 :: @L14FD40: .str L14FD40
-.orga 0x14FDB0 :: @L14FDB0: .str L14FDB0
-.orga 0x14FE00 :: @L14FE00: .str L14FE00
-.orga 0x14FE70 :: @L14FE70: .str L14FE70
-.orga 0x14FEE0 :: @L14FEE0: .str L14FEE0
-.orga 0x14FF50 :: @L14FF50: .str L14FF50
-.orga 0x14FFB0 :: @L14FFB0: .str L14FFB0
-.orga 0x150020 :: @L150020: .str L150020
-.orga 0x150080 :: @L150080: .str L150080
-.orga 0x1500F0 :: @L1500F0: .str L1500F0
-.orga 0x150160 :: @L150160: .str L150160
-.orga 0x1501D0 :: @L1501D0: .str L1501D0
-.orga 0x150240 :: @L150240: .str L150240
-.orga 0x1502B0 :: @L1502B0: .str L1502B0
-.orga 0x150310 :: @L150310: .str L150310
-.orga 0x150380 :: @L150380: .str L150380
-.orga 0x1503F0 :: @L1503F0: .str L1503F0
-.orga 0x150450 :: @L150450: .str L150450
-.orga 0x1504B0 :: @L1504B0: .str L1504B0
-.orga 0x150520 :: @L150520: .str L150520
-.orga 0x150590 :: @L150590: .str L150590
-.orga 0x1505D0 :: @L1505D0: .str L1505D0
-.orga 0x150620 :: @L150620: .str L150620
-.orga 0x150660 :: @L150660: .str L150660
-.orga 0x1506B0 :: @L1506B0: .str L1506B0
-.orga 0x1506F0 :: @L1506F0: .str L1506F0
-.orga 0x150740 :: @L150740: .str L150740
-.orga 0x1507A0 :: @L1507A0: .str L1507A0
-.orga 0x1507F0 :: @L1507F0: .str L1507F0
-.orga 0x150840 :: @L150840: .str L150840
-.orga 0x1508A0 :: @L1508A0: .str L1508A0
-.orga 0x1508E0 :: @L1508E0: .str L1508E0
-.orga 0x150930 :: @L150930: .str L150930
-.orga 0x150980 :: @L150980: .str L150980
-.orga 0x1509F0 :: @L1509F0: .str L1509F0
-.orga 0x150A20 :: @L150A20: .str L150A20
-.orga 0x150A80 :: @L150A80: .str L150A80
-.orga 0x150A90 :: @L150A90: .str L150A90
-.orga 0x150AA0 :: @L150AA0: .str L150AA0
-.orga 0x150AB0 :: @L150AB0: .str L150AB0
-.orga 0x150AC0 :: @L150AC0: .str L150AC0
-.orga 0x150AD8 :: @L150AD8: .str L150AD8
-.orga 0x150AE8 :: @L150AE8: .str L150AE8
-.orga 0x150AF8 :: @L150AF8: .str L150AF8
-.orga 0x150B10 :: @L150B10: .str L150B10
-.orga 0x150B28 :: @L150B28: .str L150B28
-.orga 0x150B38 :: @L150B38: .str L150B38
-.orga 0x150B50 :: @L150B50: .str L150B50
-.orga 0x150B68 :: @L150B68: .str L150B68
-.orga 0x150B78 :: @L150B78: .str L150B78
-.orga 0x150B88 :: @L150B88: .str L150B88
-.orga 0x150B98 :: @L150B98: .str L150B98
-.orga 0x150BA8 :: @L150BA8: .str L150BA8
-.orga 0x150BB8 :: @L150BB8: .str L150BB8
-.orga 0x150BC8 :: @L150BC8: .str L150BC8
-.orga 0x150BD8 :: @L150BD8: .str L150BD8
-.orga 0x150BE8 :: @L150BE8: .str L150BE8
-.orga 0x150BF0 :: @L150BF0: .str L150BF0
-.orga 0x150C00 :: @L150C00: .str L150C00
-.orga 0x150C10 :: @L150C10: .str L150C10
-.orga 0x150C20 :: @L150C20: .str L150C20
-.orga 0x150C30 :: @L150C30: .str L150C30
-.orga 0x150C40 :: @L150C40: .str L150C40
-.orga 0x150C50 :: @L150C50: .str L150C50
-.orga 0x150C60 :: @L150C60: .str L150C60
-.orga 0x150C70 :: @L150C70: .str L150C70
-.orga 0x150C80 :: @L150C80: .str L150C80
-.orga 0x150C98 :: @L150C98: .str L150C98
-.orga 0x150CA8 :: @L150CA8: .str L150CA8
-.orga 0x150CB8 :: @L150CB8: .str L150CB8
-.orga 0x150CC8 :: @L150CC8: .str L150CC8
-.orga 0x150CD8 :: @L150CD8: .str L150CD8
-.orga 0x150CE8 :: @L150CE8: .str L150CE8
-.orga 0x150CF8 :: @L150CF8: .str L150CF8
-.orga 0x150D08 :: @L150D08: .str L150D08
-.orga 0x150D18 :: @L150D18: .str L150D18
-.orga 0x150D28 :: @L150D28: .str L150D28
-.orga 0x150D38 :: @L150D38: .str L150D38
-.orga 0x150D48 :: @L150D48: .str L150D48
-.orga 0x150D58 :: @L150D58: .str L150D58
-.orga 0x150D68 :: @L150D68: .str L150D68
-.orga 0x150D78 :: @L150D78: .str L150D78
-.orga 0x150D80 :: @L150D80: .str L150D80
-.orga 0x150D90 :: @L150D90: .str L150D90
-.orga 0x150DB0 :: @L150DB0: .str L150DB0
-.orga 0x150DD0 :: @L150DD0: .str L150DD0
-.orga 0x150E20 :: @L150E20: .str L150E20
-.orga 0x150E50 :: @L150E50: .str L150E50
-.orga 0x150E70 :: @L150E70: .str L150E70
-.orga 0x150E90 :: @L150E90: .str L150E90
-.orga 0x150EE0 :: @L150EE0: .str L150EE0
-.orga 0x150F00 :: @L150F00: .str L150F00
-.orga 0x150F18 :: @L150F18: .str L150F18
-.orga 0x150F30 :: @L150F30: .str L150F30
-.orga 0x150F60 :: @L150F60: .str L150F60
-.orga 0x150FB0 :: @L150FB0: .str L150FB0
-.orga 0x151000 :: @L151000: .str L151000
-.orga 0x151020 :: @L151020: .str L151020
-.orga 0x151040 :: @L151040: .str L151040
-.orga 0x151060 :: @L151060: .str L151060
-.orga 0x151080 :: @L151080: .str L151080
-.orga 0x1510A0 :: @L1510A0: .str L1510A0
-.orga 0x1510F0 :: @L1510F0: .str L1510F0
-.orga 0x151140 :: @L151140: .str L151140
-.orga 0x151190 :: @L151190: .str L151190
-.orga 0x1511A0 :: @L1511A0: .str L1511A0
-.orga 0x1511C0 :: @L1511C0: .str L1511C0
+
 .orga 0x1511D8 :: @L1511D8: .str L1511D8
 .orga 0x1511E8 :: @L1511E8: .str L1511E8
 .orga 0x151200 :: @L151200: .str L151200
 .orga 0x151218 :: @L151218: .str L151218
-.orga 0x151230 :: @L151230: .str L151230
-.orga 0x151240 :: @L151240: .str L151240
-.orga 0x151248 :: @L151248: .str L151248
-.orga 0x151258 :: @L151258: .str L151258
-.orga 0x151260 :: @L151260: .str L151260
-.orga 0x151270 :: @L151270: .str L151270
-.orga 0x151278 :: @L151278: .str L151278
-.orga 0x151288 :: @L151288: .str L151288
-.orga 0x151298 :: @L151298: .str L151298
-.orga 0x1512A8 :: @L1512A8: .str L1512A8
-.orga 0x1512B8 :: @L1512B8: .str L1512B8
-.orga 0x1512C8 :: @L1512C8: .str L1512C8
-.orga 0x1512D8 :: @L1512D8: .str L1512D8
-.orga 0x1512E8 :: @L1512E8: .str L1512E8
-.orga 0x1512F8 :: @L1512F8: .str L1512F8
-.orga 0x151308 :: @L151308: .str L151308
-.orga 0x151310 :: @L151310: .str L151310
-.orga 0x151330 :: @L151330: .str L151330
-.orga 0x151340 :: @L151340: .str L151340
-.orga 0x151360 :: @L151360: .str L151360
-.orga 0x151370 :: @L151370: .str L151370
-.orga 0x151380 :: @L151380: .str L151380
-.orga 0x151390 :: @L151390: .str L151390
-.orga 0x1513A0 :: @L1513A0: .str L1513A0
-.orga 0x1513B0 :: @L1513B0: .str L1513B0
-.orga 0x1513C0 :: @L1513C0: .str L1513C0
-.orga 0x1513C8 :: @L1513C8: .str L1513C8
-.orga 0x1513D8 :: @L1513D8: .str L1513D8
-.orga 0x1513E8 :: @L1513E8: .str L1513E8
-.orga 0x1513F8 :: @L1513F8: .str L1513F8
-.orga 0x151408 :: @L151408: .str L151408
-.orga 0x151418 :: @L151418: .str L151418
-.orga 0x151428 :: @L151428: .str L151428
-.orga 0x151438 :: @L151438: .str L151438
-.orga 0x151448 :: @L151448: .str L151448
-.orga 0x151458 :: @L151458: .str L151458
-.orga 0x151460 :: @L151460: .str L151460
-.orga 0x151470 :: @L151470: .str L151470
-.orga 0x151478 :: @L151478: .str L151478
-.orga 0x151488 :: @L151488: .str L151488
-.orga 0x151498 :: @L151498: .str L151498
-.orga 0x1514A8 :: @L1514A8: .str L1514A8
-.orga 0x1514B8 :: @L1514B8: .str L1514B8
-.orga 0x1514C8 :: @L1514C8: .str L1514C8
-.orga 0x1514D8 :: @L1514D8: .str L1514D8
-.orga 0x1514E8 :: @L1514E8: .str L1514E8
-.orga 0x1514F8 :: @L1514F8: .str L1514F8
-.orga 0x151510 :: @L151510: .str L151510
-.orga 0x151528 :: @L151528: .str L151528
-.orga 0x151538 :: @L151538: .str L151538
-.orga 0x151548 :: @L151548: .str L151548
-.orga 0x151558 :: @L151558: .str L151558
-.orga 0x151568 :: @L151568: .str L151568
-.orga 0x151578 :: @L151578: .str L151578
-.orga 0x151580 :: @L151580: .str L151580
-.orga 0x151598 :: @L151598: .str L151598
-.orga 0x1515A8 :: @L1515A8: .str L1515A8
-.orga 0x1515B8 :: @L1515B8: .str L1515B8
-.orga 0x1515C8 :: @L1515C8: .str L1515C8
-.orga 0x1515D0 :: @L1515D0: .str L1515D0
-.orga 0x1515E8 :: @L1515E8: .str L1515E8
-.orga 0x1515F8 :: @L1515F8: .str L1515F8
-.orga 0x151608 :: @L151608: .str L151608
-.orga 0x151618 :: @L151618: .str L151618
-.orga 0x151628 :: @L151628: .str L151628
-.orga 0x151630 :: @L151630: .str L151630
-.orga 0x151640 :: @L151640: .str L151640
-.orga 0x151658 :: @L151658: .str L151658
-.orga 0x151670 :: @L151670: .str L151670
-.orga 0x151690 :: @L151690: .str L151690
-.orga 0x1516A0 :: @L1516A0: .str L1516A0
-.orga 0x1516B8 :: @L1516B8: .str L1516B8
-.orga 0x1516C0 :: @L1516C0: .str L1516C0
-.orga 0x1516E0 :: @L1516E0: .str L1516E0
-.orga 0x151700 :: @L151700: .str L151700
-.orga 0x151720 :: @L151720: .str L151720
-.orga 0x151740 :: @L151740: .str L151740
-.orga 0x151770 :: @L151770: .str L151770
-.orga 0x1517A0 :: @L1517A0: .str L1517A0
-.orga 0x1517D0 :: @L1517D0: .str L1517D0
-.orga 0x151800 :: @L151800: .str L151800
-.orga 0x151820 :: @L151820: .str L151820
-.orga 0x151840 :: @L151840: .str L151840
-.orga 0x151860 :: @L151860: .str L151860
-.orga 0x151880 :: @L151880: .str L151880
-.orga 0x1518B0 :: @L1518B0: .str L1518B0
-.orga 0x1518D0 :: @L1518D0: .str L1518D0
-.orga 0x151900 :: @L151900: .str L151900
-.orga 0x151920 :: @L151920: .str L151920
-.orga 0x151940 :: @L151940: .str L151940
-.orga 0x151960 :: @L151960: .str L151960
-.orga 0x151990 :: @L151990: .str L151990
-.orga 0x1519C0 :: @L1519C0: .str L1519C0
-.orga 0x1519E0 :: @L1519E0: .str L1519E0
-.orga 0x151A10 :: @L151A10: .str L151A10
-.orga 0x151A40 :: @L151A40: .str L151A40
-.orga 0x151A80 :: @L151A80: .str L151A80
-.orga 0x151AA0 :: @L151AA0: .str L151AA0
-.orga 0x151AD0 :: @L151AD0: .str L151AD0
-.orga 0x151AF0 :: @L151AF0: .str L151AF0
-.orga 0x151B10 :: @L151B10: .str L151B10
-.orga 0x151B20 :: @L151B20: .str L151B20
-.orga 0x151B50 :: @L151B50: .str L151B50
-.orga 0x151B70 :: @L151B70: .str L151B70
 
 .orga 0x15AE48 :: @L15AE48: .str L15AE48
 .orga 0x15AE50 :: @L15AE50: .str L15AE50
