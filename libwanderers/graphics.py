@@ -119,7 +119,7 @@ def extract_naxa(filepath: str | Path, extract_frames: bool = False):
         sprW = _intlit(graphic.read(2))
         sprH = _intlit(graphic.read(2))
         sprOffset = _intlit(graphic.read(4))
-        graphic.read(4)  # Skip sprIndex
+        index = _intlit(graphic.read(4))           
         sprSize = (sprH, sprW)
         sprDataSize = sprH * sprW
         realOffset = pxlOffset + sprOffset
@@ -150,7 +150,7 @@ def extract_naxa(filepath: str | Path, extract_frames: bool = False):
         sprite.save(fp=output_dir / f"{filename}_{x}.png")
         print(f"{filename}/{filename}_{x}.png saved!")
 
-        logFile.write(f"{filename}_{x}.png is at {realOffset:X} (sprite offset is {sprOffset:X}) its size is {sprSize[0]:X}H and {sprSize[1]:X}W its data size is {sprDataSize:X} bytes\n")
+        logFile.write(f"{filename}_{x}.png (index is {index:X}) is at {realOffset:X} (sprite offset is {sprOffset:X}) its size is {sprSize[0]:X}H and {sprSize[1]:X}W its data size is {sprDataSize:X} bytes\n")
 
     if extract_frames:
 
@@ -359,7 +359,8 @@ def update_naxa(filepath: str | Path, insert_frames: bool = False):
         newFile.write(_writeint(graphic.width, 2))
 
         newFile.write(_writeint(sprOffset, 4))
-        newFile.write(_writeint(x, 4))
+        newFile.read(4)
+        #newFile.write(_writeint(x, 4))
         sprOffset = sprOffset + size + padding
 
     for x in range(spriteCount):
