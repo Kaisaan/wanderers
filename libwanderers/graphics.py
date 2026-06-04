@@ -348,6 +348,8 @@ def update_naxa(filepath: str | Path, insert_frames: bool = False):
             size = size // 2
             if (size % 16 != 0):
                 padding = size % 16
+            else:
+                padding = 0
         
         if insert_frames:
             newFile.write(_writeint(graphic.height, 2))
@@ -386,7 +388,15 @@ def update_naxa(filepath: str | Path, insert_frames: bool = False):
                 byte = byte.to_bytes(1)
                 binData = binData + byte
 
-        if x != (spriteCount - 1):          # No need to add padding to the last sprite
+        size = graphic.width * graphic.height
+        if bpp == 4:
+            size = size // 2
+            if (size % 16 != 0):
+                padding = size % 16
+            else:
+                padding = 0
+
+        if (x != (spriteCount - 1)) or (padding != 0):      # No need to add padding to the last sprite
             for i in range(padding):
                 binData = binData + b"\xFF"
         
