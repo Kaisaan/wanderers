@@ -110,6 +110,24 @@ li v0,0x130
 
 
 
+////
+// TutorialControls
+////
+
+// Same deal as TextBubble. Rewire call sites from char-count helpers to
+// pixel-width helpers, then drop the glyph-count * 0x14 conversions.
+.org 0x1744a0
+jal text_max_line_pixel_width
+
+.org 0x1744ac
+move s1,v0
+.org 0x1744b0
+nop
+.org 0x1744b8
+nop
+
+
+
 // For spaces only advance 8px instead of previous 10
 .org 0x0010f7c4
 addiu a0,s3,0x8
