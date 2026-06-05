@@ -724,56 +724,58 @@
 .dw @L151840
 .dw @L151860
 .dw @L151880
-.skip 4
+.dw @Lcredits
+.dw 0x00
 .dw @L151900
 .dw @L151920
 .dw @L151940
 .dw @L151960
 .dw @L151990
 .dw @L1519C0
-.skip 4
+.dw 0x00
 .dw @L1519E0
 .dw @L151A10
 .dw @L151A40
-.skip 4
+.dw 0x00
 .dw @L151A80
 .dw @L151AA0
-.skip 4
+.dw 0x00
 .dw @L151AD0
 .dw @L151AF0
-.skip 64
+.skip 60
 .dw @L151B10
 .dw @L1516E0
 .dw @L151700
 .dw @L151720
-.skip 4
+.dw 0x00
 .dw @L151740
 .dw @L151770
 .dw @L1517A0
 .dw @L1517D0
 .dw @L151800
-.skip 4
+.dw 0x00
 .dw @L151B20
 .dw @L151B50
 .dw @L151B70
-.skip 4
+.dw 0x00
 .dw @L151900
 .dw @L151920
 .dw @L151940
 .dw @L151960
 .dw @L151990
 .dw @L1519C0
-.skip 4
+.dw 0x00
 .dw @L1519E0
 .dw @L151A10
 .dw @L151A40
-.skip 4
+.dw 0x00
 .dw @L151A80
 .dw @L151AA0
-.skip 4
+.dw 0x00
 .dw @L151AD0
 .dw @L151AF0
-.skip 64
+.skip 60
+.dw 0x00
 .dw @L151B10
 
 // Credits Text
@@ -869,6 +871,7 @@
 @L151840: .str L151840
 @L151860: .str L151860
 @L151880: .str L151880
+@Lcredits: .str Lcredits
 @L1518B0: .str L1518B0
 @L1518D0: .str L1518D0
 @L151900: .str L151900
