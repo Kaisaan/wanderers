@@ -889,6 +889,52 @@
 @L151B50: .str L151B50
 @L151B70: .str L151B70
 
+// Item Get Text Pointers
+
+.orga 0xD6EE0
+
+.dw @L148060
+.dw @L148070
+.dw @L148070
+.dw @L148070
+.dw @L148060
+.dw @L148060
+.dw @L148060
+.dw @L148060
+.dw @L148070
+.dw @L148060
+.dw @L148060
+.dw @L148060
+.dw @L148060
+.dw @L148060
+.dw @L148060
+.dw @L148060
+.dw @L148060
+.dw @L148060
+.dw @L148060
+.dw @L148060
+.dw @L148060
+.dw @L148070
+.dw @L148060
+.dw @L148060
+.dw @L148070
+.dw @L148060
+.dw @L148060
+.dw @L148060
+.dw @L148060
+.dw @L148070
+.dw @L148060
+.dw @L148060
+.dw @L148060
+.dw @L148060
+.dw @L148060
+.dw @L148060
+.dw @L148070
+.dw @L148070
+.dw @L148060
+.dw @L148070
+.dw @L148060
+
 // Put text here (seems to be unused)
 
 .orga 0x145A88
@@ -900,6 +946,11 @@
 @L14F250: .str L14F250
 @L14F2C0: .str L14F2C0
 @L14F320: .str L14F320
+
+// Item Get text
+
+@L148060: .str L148060
+@L148070: .str L148070
 
 // Hardcoded stuff (Has no pointers)
 
