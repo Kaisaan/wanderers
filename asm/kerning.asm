@@ -127,6 +127,19 @@ nop
 nop
 
 
+////
+// Shop
+////
+
+.org 0x17de98
+addiu v0, zero, 0x0
+addiu a2,zero,0x106
+nop
+nop
+nop
+addiu v0,v0,0x116
+
+
 
 // For spaces only advance 8px instead of previous 10
 .org 0x0010f7c4
@@ -153,3 +166,5 @@ addiu s3,s3,0xa
 // Delay slot at 0x0011027c (`li a2,0x1`) is preserved.
 .org 0x00110278
 j     compute_glyph_render_width
+
+
