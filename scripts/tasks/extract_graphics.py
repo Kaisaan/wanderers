@@ -35,7 +35,7 @@ GRAPHICS_FILES = {
 
 }
 
-FRAMES = ["dularn00", "gildias00", "girun00", "ligaty00", "win_stg", "win_town", "zzs00"]
+FRAMES = ["dularn00", "gildias00", "girun00", "gyalva00", "ligaty00", "win_stg", "win_town", "zzs00"]
 
 
 def extract_all_graphics():
