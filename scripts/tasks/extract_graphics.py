@@ -37,6 +37,8 @@ GRAPHICS_FILES = {
 
 FRAMES = ["dularn00", "gildias00", "girun00", "gyalva00", "ligaty00", "win_stg", "win_town", "zzs00"]
 
+GBXA_FILES = {"title": "DATA/title/title.bin"}
+
 
 def extract_all_graphics():
     """Extract graphics from all _anm.bin files."""
@@ -58,6 +60,15 @@ def extract_all_graphics():
         else:
             print(f"Warning: {source} not found, skipping")
 
+    for name, source_path in GBXA_FILES.items():
+        source = Path(source_path)
+        if source.exists():
+            dest = graphics_orig / f"{name}.bin"
+            print(f"Copying {source} to {dest}")
+            shutil.copy2(source, dest)
+        else:
+            print(f"Warning: {source} not found, skipping")
+
     # Extract graphics from each file
     for name in GRAPHICS_FILES.keys():
         anm_file = graphics_orig / f"{name}_anm.bin"
@@ -65,6 +76,12 @@ def extract_all_graphics():
             print(f"\nExtracting {name}...")
             extract_frames = (name in FRAMES)
             extract_graphics(anm_file, extract_frames)
+    
+    for name in GBXA_FILES.keys():
+        bin_file = graphics_orig / f"{name}.bin"
+        if bin_file.exists():
+            print(f"\nExtracting {name}...")
+            extract_graphics(bin_file)
 
     print("\nGraphics extraction complete!")
 

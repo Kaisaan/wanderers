@@ -398,7 +398,7 @@ def update_naxa(filepath: str | Path, insert_frames: bool = False):
 
         if (x != (spriteCount - 1)) or (padding != 0):      # No need to add padding to the last sprite
             for i in range(padding):
-                binData = binData + b"\xFF"
+                binData = binData + b"\x00"
         
         newFile.write(binData)
 
@@ -408,6 +408,78 @@ def update_naxa(filepath: str | Path, insert_frames: bool = False):
     newFile.close()
     
     print(f"{filename}_new.bin saved!")
+
+def update_gbxa(filepath: str | Path):
+    """
+    Insert edited graphics back into a .bin file.
+    
+    Args:
+        filepath: Path to the .bin file
+    """
+
+    filepath = Path(filepath).resolve()
+    filedir = filepath.parent
+    filename = filepath.name
+
+    origFile = open(filepath, "rb")
+
+    filename = filename[:filename.rfind(".bin")]
+
+    input_dir = filedir / filename
+
+    shutil.copy(filepath, filedir / f"{filename}_new.bin")
+
+    newFile = open(filedir / f"{filename}_new.bin", "r+b")
+
+    header = origFile.read(0x20)
+
+    newFile.seek(0)
+    newFile.write(header)
+
+    clutSize = _intlit(header[0x8:0xC])
+    clutOffset = _intlit(header[0xC:0x10])
+    pxlOffset = _intlit(header[0x10:0x14])
+    sprW = _intlit(header[0x14:0x16])
+    sprH = _intlit(header[0x16:0x18])
+    blockW = _intlit(header[0x18:0x1A])
+    blockH = _intlit(header[0x1A:0x1C])
+    gfxW = _intlit(header[0x1C:0x1E])
+    gfxH = _intlit(header[0x1E:0x20])
+
+    bpp = 0
+
+    if (clutSize == 256):
+        bpp = 8
+    elif (clutSize == 16):
+        exit("GBXA with 4BPP graphics not supported yet")
+    else:
+        exit("other BPP formats not supported yet")
+
+    palSize = 4
+
+    with open(input_dir / f"{filename}_orig.pal", "rb") as palFile:
+        clut = palFile.read(clutSize * palSize)
+
+    newFile.seek(clutOffset)
+    newFile.write(clut)
+
+    for x in range(blockW * blockH):
+        graphic = Image.open(input_dir / f"{filename}_{x}.png", "r")
+
+        data = list(graphic.getdata())
+
+        binData = b""
+        if (bpp == 8):
+            for i in range(len(data)):
+                byte = data[i].to_bytes(1)
+                binData = binData + byte
+
+        newFile.write(binData)
+        
+        print(f"{filename}/{filename}_{x}.png written!")
+
+    newFile.close()
+    origFile.close()
 
 def insert_graphics(filepath: str | Path, extract_frames: bool = False):
     """
@@ -419,6 +491,6 @@ def insert_graphics(filepath: str | Path, extract_frames: bool = False):
     if fmt == "naxa":
         update_naxa(filepath, extract_frames)
     elif fmt == "gbxa":
-        raise ValueError(f"{filepath}: GBXA2000 file updating not currently supported")
+        update_gbxa(filepath)
     else:
         raise ValueError(f"{filepath}: unknown graphics identifier (not NAXA5010 or GBXA2000)")

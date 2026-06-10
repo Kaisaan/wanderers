@@ -2,7 +2,7 @@ import shutil
 import sys
 from pathlib import Path
 
-from .extract_graphics import GRAPHICS_FILES, FRAMES
+from .extract_graphics import GRAPHICS_FILES, FRAMES, GBXA_FILES
 from libwanderers.graphics import insert_graphics
 
 def copy_tree(src, dst):
@@ -49,9 +49,27 @@ def insert_all_graphics():
         else:
             print(f"Warning: {anm_file} not found, skipping")
     
+    for name in GBXA_FILES.keys():
+        bin_file = graphics_orig / f"{name}.bin"
+        if bin_file.exists():
+            print(f"\nInserting {name}...")
+            insert_graphics(bin_file)
+        else:
+            print(f"Warning: {bin_file} not found, skipping")
+    
     # Copy _new.bin files back to DATA
     print("\nCopying patched graphics back to DATA...")
     for name, dest_path in GRAPHICS_FILES.items():
+        new_file = graphics_orig / f"{name}_new.bin"
+        if new_file.exists():
+            dest = Path(dest_path)
+            dest.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copy2(new_file, dest)
+            print(f"Copied {new_file} to {dest}")
+        else:
+            print(f"Warning: {new_file} not found, skipping")
+
+    for name, dest_path in GBXA_FILES.items():
         new_file = graphics_orig / f"{name}_new.bin"
         if new_file.exists():
             dest = Path(dest_path)
