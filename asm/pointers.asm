@@ -674,6 +674,8 @@
 
 .orga 0x136130
 
+// Ending Text 1 Pointers
+
 .dw @L1516E0
 .dw @L151700
 .dw @L151720
@@ -688,28 +690,33 @@
 .dw @L151840
 .dw @L151860
 .dw @L151880
+.dw @Lcredits
 .dw @L1518B0
 .dw @L1518D0
-.skip 4
+.dw 0x00
 .dw @L151900
 .dw @L151920
 .dw @L151940
 .dw @L151960
 .dw @L151990
 .dw @L1519C0
-.skip 4
+.dw 0x00
 .dw @L1519E0
 .dw @L151A10
 .dw @L151A40
-.skip 4
+.dw 0x00
 .dw @L151A80
 .dw @L151AA0
-.skip 4
+.dw 0x00
 .dw @L151AD0
 .dw @L151AF0
-.skip 64
+.skip 60
 .dw @L151B10
-.skip 8
+
+// Ending text 2
+
+.orga 0x136200
+
 .dw @L1516E0
 .dw @L151700
 .dw @L151720
@@ -744,6 +751,9 @@
 .dw @L151AF0
 .skip 60
 .dw @L151B10
+
+// Ending text 3 Pointers
+
 .dw @L1516E0
 .dw @L151700
 .dw @L151720
