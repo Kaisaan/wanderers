@@ -85,6 +85,15 @@ def main(sheets: bool = False):
     print("Done!")
 
     print("Compiling .wscript files to .bin...")
+
+    """
+    replace_wscript_block(
+        "decompiled/stage00.wscript",
+        "LABEL_000066",
+        Path("scripts", "data", "debug.wscript").read_text(encoding="utf-8"),
+    )
+    """
+
     compile_all("decompiled", "DATA/script")
     print("Done!")
 
@@ -92,6 +101,7 @@ def main(sheets: bool = False):
     insert_all_graphics()
     print("Done!")
 
+    shutil.copy(Path("scripts/data/YS3ED12.gbxa"), Path("DATA/ending/epilog2.bin"))
     print("Repacking DATA.BIN...")
     pack("DATA.BIN")
     print("Done!")

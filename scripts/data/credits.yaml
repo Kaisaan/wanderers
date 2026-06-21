@@ -1,0 +1,180 @@
+# x/y positions are inferred by scripts/misc/generate_credits.py.
+# section uses 0x30,0x60. Other rows start at 0x90 and step by 0x18:
+# title/heading at x=0x30, names at x=0x90.
+- movie: 0x0
+  lines:
+    - section: credstr_151230
+    - title: credstr_151240
+    - name: credstr_151248
+  clear: {hold: 0x30}
+
+- lines:
+    - title: credstr_151258
+    - name: credstr_151260
+
+- lines:
+    - title: credstr_151270
+    - name: credstr_151278
+
+- lines:
+    - title: credstr_151288
+    - name: credstr_151298
+
+- movie: 0x1
+  lines:
+    - title: credstr_1512A8
+    - name: credstr_1512B8
+
+- lines:
+    - title: credstr_1512C8
+    - name: credstr_1512D8
+
+- lines:
+    - title: credstr_1512E8
+    - name: credstr_1512F8
+  clear: {hold: 0x30}
+
+- lines:
+    - title: credstr_151308
+    - name: credstr_151310
+  clear: {start: 0x0, count: 0x3}
+
+- movie: 0x2
+  lines:
+    - section: credstr_151330
+    - title: credstr_151340
+    - name: credstr_151360
+    - name: credstr_151370
+  clear: {hold: 0x30}
+
+- lines:
+    - title: credstr_151380
+    - name: credstr_151390
+
+- movie: 0x3
+  lines:
+    - title: credstr_1513A0
+    - name: credstr_1513B0
+
+- lines:
+    - title: credstr_1513C0
+    - name: credstr_1513C8
+    - name: credstr_1513D8
+    - name: credstr_1513E8
+  clear: {hold: 0x38}
+
+- movie: 0x4
+  lines:
+    - title: credstr_1513F8
+    - name: credstr_151408
+    - name: credstr_151418
+    - name: credstr_151428
+    - name: credstr_151438
+    - name: credstr_151448
+    - name: credstr_151458
+  clear: {hold: 0x50}
+
+- movie: 0x5
+  lines:
+    - title: credstr_151460
+    - name: credstr_151470
+    - name: credstr_151478
+    - name: credstr_151488
+    - name: credstr_151498
+    - name: credstr_1514A8
+    - name: credstr_1514B8
+  clear: {start: 0x2, count: 0x8, hold: 0x48}
+
+- start_row: 0x1
+  lines:
+    - name: credstr_1514C8
+    - name: credstr_1514D8
+    - name: credstr_1514E8
+    - name: credstr_1514F8
+    - name: credstr_151510
+    - name: credstr_151528
+  clear: {hold: 0x48}
+
+- movie: 0x6
+  lines:
+    - title: credstr_151538
+    - name: credstr_151548
+    - name: credstr_151558
+    - name: credstr_151568
+  clear: {hold: 0x38}
+
+- movie: 0x7
+  lines:
+    - title: credstr_151578
+    - name: credstr_151580
+    - name: credstr_151598
+    - heading: credstr_1515A8
+    - name: credstr_1515B8
+    - heading: credstr_1515C8
+    - name: credstr_1515D0
+  clear: {hold: 0x30}
+
+- movie: 0x8
+  lines:
+    - title: credstr_1515E8
+    - name: credstr_1515F8
+    - name: credstr_151608
+    - name: credstr_151618
+  clear: {hold: 0x38}
+
+- lines:
+    - title: credstr_151628
+    - name: credstr_151630
+
+- movie: 0x9
+  lines:
+    - title: credstr_151640
+    - name: credstr_151658
+    - name: credstr_151670
+  clear: {start: 0x0, count: 0x4, hold: 0x38}
+
+- movie: 0xa
+  lines:
+    - title: credstr_151690
+    - name: credstr_1516A0
+  clear: {start: 0x0}
+
+- lines:
+    - title: credstr_1516B8
+    - name: credstr_1516C0
+  clear: {start: 0x0}
+
+- movie: 0xc
+  lines:
+    - section: {str: "English Fan Translation"}
+    - title: {str: "Lead"}
+    - name: {str: "Kaisaan"}
+
+- lines:
+    - title: {str: "Translation"}
+    - name: {str: "Josep"}
+
+- lines:
+    - title: {str: "Graphics"}
+    - name: {str: "Etokapa"}
+
+- lines:
+    - title: {str: "Programming"}
+    - name: {str: "Kaisaan"}
+    - name: {str: "Everdred"}
+
+- lines:
+    - title: {str: "Editing"}
+    - name: {str: "Etokapa"}
+    - name: {str: "Josep"}
+
+- lines:
+    - title: {str: "Testing"}
+    - name: {str: "Etokapa"}
+    - name: {str: "Jazzysan"}
+    - name: {str: "wagamamalullaby"}
+
+- lines:
+    - title: {str: "Special Thanks"}
+    - name: {str: "Colin"}
+  clear: {start: 0x0}
