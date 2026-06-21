@@ -1,0 +1,135 @@
+- {op: movie, index: 0x0}
+- {op: text, x: 0x30, y: 0x60, label: credstr_151230}
+- {op: text, x: 0x30, y: 0x90, label: credstr_151240}
+- {op: text, x: 0x90, y: 0xa8, label: credstr_151248}
+- {op: wait}
+- {op: clear, start: 0x1, count: 0x2, hold: 0x30}
+- {op: text, x: 0x30, y: 0x90, label: credstr_151258}
+- {op: text, x: 0x90, y: 0xa8, label: credstr_151260}
+- {op: wait}
+- {op: clear, start: 0x1, count: 0x2}
+- {op: text, x: 0x30, y: 0x90, label: credstr_151270}
+- {op: text, x: 0x90, y: 0xa8, label: credstr_151278}
+- {op: wait}
+- {op: clear, start: 0x1, count: 0x2}
+- {op: text, x: 0x30, y: 0x90, label: credstr_151288}
+- {op: text, x: 0x90, y: 0xa8, label: credstr_151298}
+- {op: wait}
+- {op: clear, start: 0x1, count: 0x2}
+- {op: movie, index: 0x1}
+- {op: text, x: 0x30, y: 0x90, label: credstr_1512A8}
+- {op: text, x: 0x90, y: 0xa8, label: credstr_1512B8}
+- {op: wait}
+- {op: clear, start: 0x1, count: 0x2}
+- {op: text, x: 0x30, y: 0x90, label: credstr_1512C8}
+- {op: text, x: 0x90, y: 0xa8, label: credstr_1512D8}
+- {op: wait}
+- {op: clear, start: 0x1, count: 0x2}
+- {op: text, x: 0x30, y: 0x90, label: credstr_1512E8}
+- {op: text, x: 0x90, y: 0xa8, label: credstr_1512F8}
+- {op: wait}
+- {op: clear, start: 0x1, count: 0x2, hold: 0x30}
+- {op: text, x: 0x30, y: 0x90, label: credstr_151308}
+- {op: text, x: 0x90, y: 0xa8, label: credstr_151310}
+- {op: wait}
+- {op: clear, start: 0x0, count: 0x3}
+- {op: movie, index: 0x2}
+- {op: text, x: 0x30, y: 0x60, label: credstr_151330}
+- {op: text, x: 0x30, y: 0x90, label: credstr_151340}
+- {op: text, x: 0x90, y: 0xa8, label: credstr_151360}
+- {op: text, x: 0x90, y: 0xc0, label: credstr_151370}
+- {op: wait}
+- {op: clear, start: 0x1, count: 0x3, hold: 0x30}
+- {op: text, x: 0x30, y: 0x90, label: credstr_151380}
+- {op: text, x: 0x90, y: 0xa8, label: credstr_151390}
+- {op: wait}
+- {op: clear, start: 0x1, count: 0x2}
+- {op: movie, index: 0x3}
+- {op: text, x: 0x30, y: 0x90, label: credstr_1513A0}
+- {op: text, x: 0x90, y: 0xa8, label: credstr_1513B0}
+- {op: wait}
+- {op: clear, start: 0x1, count: 0x2}
+- {op: text, x: 0x30, y: 0x90, label: credstr_1513C0}
+- {op: text, x: 0x90, y: 0xa8, label: credstr_1513C8}
+- {op: text, x: 0x90, y: 0xc0, label: credstr_1513D8}
+- {op: text, x: 0x90, y: 0xd8, label: credstr_1513E8}
+- {op: wait}
+- {op: clear, start: 0x1, count: 0x4, hold: 0x38}
+- {op: movie, index: 0x4}
+- {op: text, x: 0x30, y: 0x90, label: credstr_1513F8}
+- {op: text, x: 0x90, y: 0xa8, label: credstr_151408}
+- {op: text, x: 0x90, y: 0xc0, label: credstr_151418}
+- {op: text, x: 0x90, y: 0xd8, label: credstr_151428}
+- {op: text, x: 0x90, y: 0xf0, label: credstr_151438}
+- {op: text, x: 0x90, y: 0x108, label: credstr_151448}
+- {op: text, x: 0x90, y: 0x120, label: credstr_151458}
+- {op: wait}
+- {op: clear, start: 0x1, count: 0x7, hold: 0x50}
+- {op: movie, index: 0x5}
+- {op: text, x: 0x30, y: 0x90, label: credstr_151460}
+- {op: text, x: 0x90, y: 0xa8, label: credstr_151470}
+- {op: text, x: 0x90, y: 0xc0, label: credstr_151478}
+- {op: text, x: 0x90, y: 0xd8, label: credstr_151488}
+- {op: text, x: 0x90, y: 0xf0, label: credstr_151498}
+- {op: text, x: 0x90, y: 0x108, label: credstr_1514A8}
+- {op: text, x: 0x90, y: 0x120, label: credstr_1514B8}
+- {op: wait}
+- {op: clear, start: 0x2, count: 0x8, hold: 0x48}
+- {op: text, x: 0x90, y: 0xa8, label: credstr_1514C8}
+- {op: text, x: 0x90, y: 0xc0, label: credstr_1514D8}
+- {op: text, x: 0x90, y: 0xd8, label: credstr_1514E8}
+- {op: text, x: 0x90, y: 0xf0, label: credstr_1514F8}
+- {op: text, x: 0x90, y: 0x108, label: credstr_151510}
+- {op: text, x: 0x90, y: 0x120, label: credstr_151528}
+- {op: wait}
+- {op: clear, start: 0x1, count: 0x7, hold: 0x48}
+- {op: movie, index: 0x6}
+- {op: text, x: 0x30, y: 0x90, label: credstr_151538}
+- {op: text, x: 0x90, y: 0xa8, label: credstr_151548}
+- {op: text, x: 0x90, y: 0xc0, label: credstr_151558}
+- {op: text, x: 0x90, y: 0xd8, label: credstr_151568}
+- {op: wait}
+- {op: clear, start: 0x1, count: 0x4, hold: 0x38}
+- {op: movie, index: 0x7}
+- {op: text, x: 0x30, y: 0x90, label: credstr_151578}
+- {op: text, x: 0x90, y: 0xa8, label: credstr_151580}
+- {op: text, x: 0x90, y: 0xc0, label: credstr_151598}
+- {op: text, x: 0x30, y: 0xd8, label: credstr_1515A8}
+- {op: text, x: 0x90, y: 0xf0, label: credstr_1515B8}
+- {op: text, x: 0x30, y: 0x108, label: credstr_1515C8}
+- {op: text, x: 0x90, y: 0x120, label: credstr_1515D0}
+- {op: wait}
+- {op: clear, start: 0x1, count: 0x7, hold: 0x30}
+- {op: movie, index: 0x8}
+- {op: text, x: 0x30, y: 0x90, label: credstr_1515E8}
+- {op: text, x: 0x90, y: 0xa8, label: credstr_1515F8}
+- {op: text, x: 0x90, y: 0xc0, label: credstr_151608}
+- {op: text, x: 0x90, y: 0xd8, label: credstr_151618}
+- {op: wait}
+- {op: clear, start: 0x1, count: 0x4, hold: 0x38}
+- {op: text, x: 0x30, y: 0x90, label: credstr_151628}
+- {op: text, x: 0x90, y: 0xa8, label: credstr_151630}
+- {op: wait}
+- {op: clear, start: 0x1, count: 0x2}
+- {op: movie, index: 0x9}
+- {op: text, x: 0x30, y: 0x90, label: credstr_151640}
+- {op: text, x: 0x90, y: 0xa8, label: credstr_151658}
+- {op: text, x: 0x90, y: 0xc0, label: credstr_151670}
+- {op: wait}
+- {op: clear, start: 0x0, count: 0x4, hold: 0x38}
+- {op: movie, index: 0xa}
+- {op: text, x: 0x30, y: 0x90, label: credstr_151690}
+- {op: text, x: 0x90, y: 0xa8, label: credstr_1516A0}
+- {op: wait}
+- {op: clear, start: 0x0, count: 0x2}
+- {op: text, x: 0x30, y: 0x90, label: credstr_1516B8}
+- {op: text, x: 0x90, y: 0xa8, label: credstr_1516C0}
+- {op: wait}
+- {op: clear, start: 0x0, count: 0x2}
+- {op: movie, index: 0xc}
+- {op: text, x: 0x30, y: 0x90, str: Test}
+- {op: text, x: 0x90, y: 0xa8, str: Foo}
+- {op: text, x: 0x90, y: 0xc0, str: Bar}
+- {op: wait}
+- {op: clear, start: 0x0, count: 0x3}
+- {op: end}
