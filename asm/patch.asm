@@ -5,7 +5,6 @@
 
 .include "asm/kerning.asm"
 .include "asm/pointers.asm"
-.include "asm/credits_repoint.asm"
 
 .close
 

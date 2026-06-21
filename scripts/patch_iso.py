@@ -27,12 +27,6 @@ from tasks.update_graphics import insert_all_graphics
 STAGES = ["00", "01", "02", "03", "04", "05", "06"]
 PATCHED_BIN = "Ys III - Wanderers from Ys [English Patched].bin"
 PATCHED_CUE = "Ys III - Wanderers from Ys [English Patched].cue"
-EXTRA_CREDITS_MOVIE = {
-    "name": "YS3ED12.PSS",
-    "source": "translated/YS3ED12.PSS",
-    "type": "data",
-    "order": "7",
-}
 
 
 def apply_csvs(csv_dir: str, wscript_dir: str):
@@ -68,30 +62,7 @@ def compile_all(wscript_dir: str, bin_dir: str):
         dst.write_bytes(wscript_to_bin(wscript))
 
 
-def add_root_file(directory_tree: ET.Element, file_attrs: dict[str, str]):
-    for elem in directory_tree:
-        if elem.tag == "file" and elem.get("name") == file_attrs["name"]:
-            elem.attrib.update(file_attrs)
-            return
-
-    elem = ET.Element("file", file_attrs)
-    children = list(directory_tree)
-    dummy_index = next(
-        (
-            index
-            for index, child in enumerate(children)
-            if child.tag == "dummy"
-        ),
-        len(children),
-    )
-    directory_tree.insert(dummy_index, elem)
-
-
-def generate_translated_xml(
-    in_xml: str,
-    out_xml: str,
-    extra_root_files: list[dict[str, str]] | None = None,
-):
+def generate_translated_xml(in_xml: str, out_xml: str):
     """
     Rewrite every source="extracted/..." in the ISO project XML to point
     at translated/... so mkpsxiso pulls the patched copies.
@@ -101,45 +72,7 @@ def generate_translated_xml(
         src = elem.get("source")
         if src and src.startswith("extracted/"):
             elem.set("source", "translated/" + src[len("extracted/"):])
-
-    directory_tree = tree.getroot().find("./track/directory_tree")
-    if directory_tree is None:
-        raise ValueError(f"Could not find directory_tree in {in_xml}")
-    for extra_file in extra_root_files or []:
-        add_root_file(directory_tree, extra_file)
-
     tree.write(out_xml, encoding="utf-8", xml_declaration=True)
-
-
-def replace_wscript_block(path: str, label: str, new: str):
-    lines = Path(path).read_text(encoding="utf-8").splitlines(keepends=True)
-    start = next(
-        (
-            index
-            for index, line in enumerate(lines)
-            if line.strip().rstrip(":") == label
-        ),
-        None,
-    )
-    if start is None:
-        raise ValueError(f"Could not find {label} in {path}")
-
-    end = next(
-        (
-            index
-            for index in range(start + 1, len(lines))
-            if lines[index].startswith("LABEL_")
-        ),
-        None,
-    )
-    if end is None:
-        raise ValueError(f"Could not find end of {label} block in {path}")
-
-    replacement = new if new.endswith("\n") else f"{new}\n"
-    Path(path).write_text(
-        "".join(lines[:start]) + replacement + "".join(lines[end:]),
-        encoding="utf-8",
-    )
 
 
 def main(sheets: bool = False):
@@ -152,13 +85,6 @@ def main(sheets: bool = False):
     print("Done!")
 
     print("Compiling .wscript files to .bin...")
-    """
-    replace_wscript_block(
-        "decompiled/stage00.wscript",
-        "LABEL_000066",
-        Path("scripts", "data", "debug.wscript").read_text(encoding="utf-8"),
-    )
-    """
     compile_all("decompiled", "DATA/script")
     print("Done!")
 
@@ -166,7 +92,6 @@ def main(sheets: bool = False):
     insert_all_graphics()
     print("Done!")
 
-    shutil.copy("/Users/cschmidt/git/wanderers/scripts/data/YS3ED12.gbxa", "/Users/cschmidt/git/wanderers/DATA/ending/epilog2.bin")
     print("Repacking DATA.BIN...")
     pack("DATA.BIN")
     print("Done!")
@@ -187,21 +112,8 @@ def main(sheets: bool = False):
     shutil.copy("scripts/data/OPENING.PSS", "translated/MOVIE")
     print("Done!")
 
-    extra_root_files = []
-    extra_movie_source = Path("scripts/data/YS3ED12.PSS")
-    extra_movie_dest = Path(EXTRA_CREDITS_MOVIE["source"])
-
-    print("Copying extra credits movie...")
-    shutil.copy(extra_movie_source, extra_movie_dest)
-    extra_root_files.append(EXTRA_CREDITS_MOVIE)
-    print("Done!")
-
     print("Generating translated.xml...")
-    generate_translated_xml(
-        "wanderers.xml",
-        "translated.xml",
-        extra_root_files=extra_root_files,
-    )
+    generate_translated_xml("wanderers.xml", "translated.xml")
     print("Done!")
 
     print("Rebuilding ISO...")
