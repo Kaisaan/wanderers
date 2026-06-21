@@ -31,7 +31,8 @@ GRAPHICS_FILES = {
     "win_stage": "DATA/worldmap/win_stage_anm.bin",
     "win_stg": "DATA/window/win_stg_anm.bin",
     "win_town": "DATA/window/win_town_anm.bin",
-    "zzs00": "DATA/bossname/08/zzs00_anm.bin"
+    "zzs00": "DATA/bossname/08/zzs00_anm.bin",
+    "zzs01": "DATA/bossname/08/zzs01_anm.bin"
 
 }
 
