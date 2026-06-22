@@ -357,37 +357,37 @@ class NPCReact(Operation):
     size = 1
 
 
-class ChangeScene(Operation):
+class GiveItem(Operation):
     opcode = 0x28
     size = 1
 
 
-class CheckFlag(Operation):
+class CheckInventory(Operation):
     opcode = 0x29
     size = 1
 
 
-class SetFlag(Operation):
+class SetStoryFlag(Operation):
     opcode = 0x2A
     size = 1
 
 
-class ClearFlag(Operation):
+class ClearStoryFlag(Operation):
     opcode = 0x2B
     size = 1
 
 
-class CheckFlag2(Operation):
+class CheckStoryFlag(Operation):
     opcode = 0x2C
     size = 1
 
 
-class CheckEvent(Operation):
+class RandomCheck(Operation):
     opcode = 0x2D
     size = 1
 
 
-class CheckItem(Operation):
+class CheckProgressBit(Operation):
     opcode = 0x2E
     size = 1
 
@@ -398,7 +398,7 @@ class ConditionalRelativeJump(Operation):
     # Jump destination = (opcode_position + 1) + target, where target
     # is the raw `skip_len` byte from the script (i.e. relative to the
     # byte just after the opcode). `value` is the argument passed to the
-    # check opcode named by `type` (e.g. flag/event/item id). Named to
+    # check opcode named by `type` (e.g. inventory/story/random/progress id). Named to
     # avoid colliding with the generic Operation.arg (bytes) used by
     # line_to_op when round-tripping wscript back to .bin.
     def __init__(self, target: int, type: int, value: int):
@@ -511,13 +511,13 @@ opcodes = {
     0x25: SetMapEffect,
     0x26: NPCReactWithVoice,
     0x27: NPCReact,
-    0x28: ChangeScene,
-    0x29: CheckFlag,
-    0x2A: SetFlag,
-    0x2B: ClearFlag,
-    0x2C: CheckFlag2,
-    0x2D: CheckEvent,
-    0x2E: CheckItem,
+    0x28: GiveItem,
+    0x29: CheckInventory,
+    0x2A: SetStoryFlag,
+    0x2B: ClearStoryFlag,
+    0x2C: CheckStoryFlag,
+    0x2D: RandomCheck,
+    0x2E: CheckProgressBit,
     0x2F: ConditionalRelativeJump,
     0x30: SkipByte,
     0x31: UnconditionalJump,
