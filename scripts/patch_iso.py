@@ -168,7 +168,7 @@ def main(sheets: bool = False):
     insert_all_graphics()
     print("Done!")
 
-    shutil.copy(Path("scripts/data/YS3ED12.gbxa"), Path("DATA/ending/epilog2.bin"))
+    shutil.copy(Path("scripts/data/ys3ed12.gbxa"), Path("DATA/ending/epilog2.bin"))
     print("Repacking DATA.BIN...")
     pack("DATA.BIN")
     print("Done!")
