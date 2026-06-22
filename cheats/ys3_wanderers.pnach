@@ -20,6 +20,7 @@ patch=0,EE,00153364,word,00431021
 [All items]
 author=Everdred
 description=All swords, armor, shields, rings and secondary items
+patch=1,EE,4081C0F8,extended,00290001
 patch=1,EE,00000001,extended,00000000
 
 
