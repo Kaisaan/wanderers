@@ -44,6 +44,13 @@ move v0,s5
 .org 0x174e34
 addiu a2,v0,0x0
 
+// Speed up TextBubble typewriter delay from 6 frames per glyph to 4.
+.org 0x174b70
+li a3,0x4
+
+.org 0x174d58
+li a3,0x4
+
 
 ////
 // CutsceneText
@@ -166,5 +173,4 @@ addiu s3,s3,0xa
 // Delay slot at 0x0011027c (`li a2,0x1`) is preserved.
 .org 0x00110278
 j     compute_glyph_render_width
-
 
