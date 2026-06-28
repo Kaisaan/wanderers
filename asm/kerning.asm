@@ -51,6 +51,10 @@ li a3,0x4
 .org 0x174d58
 li a3,0x4
 
+// CutsceneText typewriter
+.org 0x175134
+li a3,0x4
+
 
 ////
 // CutsceneText
