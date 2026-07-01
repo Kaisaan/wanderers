@@ -173,8 +173,10 @@
     - name: {str: "Etokapa"}
     - name: {str: "Jazzysan"}
     - name: {str: "wagamamalullaby"}
+    - name: {str: "DRAGONBLEAPIECE"}
 
 - lines:
     - title: {str: "Special Thanks"}
-    - name: {str: "Colin"}
+    - name: {str: "Everyone Who Has Supported Me"}
+    - name: {str: "You!"}
   clear: {start: 0x0}

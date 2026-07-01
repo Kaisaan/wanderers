@@ -160,12 +160,14 @@ credits_script:
 .dw 0x00000090, 0x000000a8, 0x00000002, 0x00000008, 0x00000018, cred_etokapa
 .dw 0x00000090, 0x000000c0, 0x00000002, 0x00000008, 0x00000018, cred_jazzysan
 .dw 0x00000090, 0x000000d8, 0x00000002, 0x00000008, 0x00000018, cred_wagamamalullaby
+.dw 0x00000090, 0x000000f0, 0x00000002, 0x00000008, 0x00000018, cred_dragonbleapiece
 .dw 0x00000000, 0x00000000, 0x00000003, 0x00000096, 0x00000000, cred_null
-.dw 0x00000001, 0x00000004, 0x00000006, 0x00000028, 0x00000018, cred_null
+.dw 0x00000001, 0x00000005, 0x00000006, 0x00000028, 0x00000018, cred_null
 .dw 0x00000030, 0x00000090, 0x00000002, 0x00000008, 0x00000018, cred_special_thanks
-.dw 0x00000090, 0x000000a8, 0x00000002, 0x00000008, 0x00000018, cred_colin
+.dw 0x00000090, 0x000000a8, 0x00000002, 0x00000008, 0x00000018, cred_everyone_who_has_supported_me
+.dw 0x00000090, 0x000000c0, 0x00000002, 0x00000008, 0x00000018, cred_you
 .dw 0x00000000, 0x00000000, 0x00000003, 0x00000096, 0x00000000, cred_null
-.dw 0x00000000, 0x00000002, 0x00000006, 0x00000028, 0x00000018, cred_null
+.dw 0x00000000, 0x00000003, 0x00000006, 0x00000028, 0x00000018, cred_null
 .dw 0x00000000, 0x00000000, 0xffffffff, 0x00000000, 0x00000000, cred_null
 
 // brand-new lines referenced by YAML `str` entries
@@ -182,6 +184,8 @@ cred_editing: .str "Editing"
 cred_testing: .str "Testing"
 cred_jazzysan: .str "Jazzysan"
 cred_wagamamalullaby: .str "wagamamalullaby"
+cred_dragonbleapiece: .str "DRAGONBLEAPIECE"
 cred_special_thanks: .str "Special Thanks"
-cred_colin: .str "Colin"
+cred_everyone_who_has_supported_me: .str "Everyone Who Has Supported Me"
+cred_you: .str "You!"
 .align 4
