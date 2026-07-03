@@ -8,6 +8,21 @@
 .include "asm/credits_repoint.asm"
 .include "asm/equip_menu_layout.asm"
 
+// Fix buffer size calculator to
+// round up when calculating quadwords
+
+.org 0x1179C0
+mult v0,a3,a1
+addiu v0,v0,0x1f 
+jr ra
+sra v0,v0,0x05
+default_case:
+jr ra
+daddu v0,zero,zero
+
+.org 0x117964
+beq v0,zero,default_case
+
 .close
 
 // New code, tables, etc go here
