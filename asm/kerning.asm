@@ -55,6 +55,9 @@ li a3,0x4
 .org 0x175134
 li a3,0x4
 
+// Shift Speaker Names to the right
+.org 0x0015F0EC
+addiu a1,zero,0x70
 
 ////
 // CutsceneText
