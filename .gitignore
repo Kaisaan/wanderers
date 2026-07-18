@@ -17,3 +17,5 @@ decompiled/
 /font/
 graphics/orig
 asm/strings.asm
+/music/*.psf2
+/music/*.wav

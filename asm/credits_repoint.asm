@@ -1,25 +1,3 @@
-// Point credits() at our relocated script in the codecave.
-//
-// play_ending_sequence builds the script address in a0 across two
-// NON-contiguous instructions (a `li v0,1` / `lui at,0x82` sit between them and
-// are consumed by the jal's delay-slot store), so we patch the two halves in
-// place rather than emitting a `la`:
-//
-//   1b0220: lui   a0,0x23        -> lui   a0, hi(credits_script)
-//   1b0224: li    v0,0x1            (untouched -- needed by the delay slot)
-//   1b0228: lui   at,0x82          (untouched)
-//   1b022c: addiu a0,a0,0x5490   -> addiu a0, a0, lo(credits_script)
-//   1b0230: jal   credits
-//   1b0234: sw    v0,-0x4020(at)   (delay slot)
-//
-// `credits_script` is defined in asm/credits.asm (included by asm/codecave.asm),
-// resolved in the same armips pass.
-.org 0x1b0220
-lui a0, hi(credits_script)
-
-.org 0x1b022c
-addiu a0, a0, lo(credits_script)
-
 // credits() keeps the movie path table and still-image archive ID table in
 // separate globals. Repoint both table bases to the codecave copies so added
 // movie command indices can resolve past the original tables.

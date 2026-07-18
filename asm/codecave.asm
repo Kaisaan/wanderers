@@ -10,6 +10,12 @@ kerning_table:
 .include "asm/functions/text_last_line_pixel_width.asm"
 .include "asm/functions/text_max_line_pixel_width.asm"
 .include "asm/functions/glyph_render_width.asm"
+.include "asm/play_ending_sequence.asm"
+
+// Text for the added Triangle prompt on the ending screen.
+ending_fan_tl_credits_prompt:
+.str "#GR△#WH: Fan TL Credits"
+.align 4
 
 // credits() indexes these in parallel for each movie command. The original
 // movie paths are still resident in SLPM_625.32; only the added path lives here.
@@ -48,8 +54,7 @@ credits_still_image_id_table:
 .dh 0x6
 .align 4
 
-// Relocated credits script (commands + any new lines). `credits_script` is the
-// base play_ending_sequence feeds to credits(); see asm/credits_repoint.asm.
+// Relocated credits script for the alternate credits path.
 .include "asm/credits.asm"
 
 .close

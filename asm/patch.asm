@@ -6,6 +6,7 @@
 .include "asm/kerning.asm"
 .include "asm/pointers.asm"
 .include "asm/credits_repoint.asm"
+.include "asm/play_ending_sequence_repoint.asm"
 .include "asm/equip_menu_layout.asm"
 
 // Fix buffer size calculator to
