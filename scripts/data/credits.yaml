@@ -12,7 +12,7 @@
     - name: {str: "Josep"}
 
 - lines:
-    - title: {str: "Graphics"}
+    - title: {str: "Graphics & Video"}
     - name: {str: "Etokapa"}
 
 - lines:
@@ -23,7 +23,7 @@
 - lines:
     - title: {str: "Editing"}
     - name: {str: "Etokapa"}
-    - name: {str: "Josep"}
+    - name: {str: "JosepMC"}
 
 - lines:
     - title: {str: "Testing"}
@@ -34,7 +34,8 @@
 
 - lines:
     - title: {str: "Special Thanks"}
-    - name: {str: "Everyone Who Has Supported Me"}
+    - name: {str: "All Lost Kefin contributors"}
+    - name: {str: "All supporters"}
     - name: {str: "You!"}
     - name: {str: ""}
   clear: {start: 0x0}

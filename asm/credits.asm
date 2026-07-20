@@ -14,7 +14,7 @@ credits_script:
 .dw 0x00000090, 0x000000a8, 0x00000002, 0x00000008, 0x00000018, cred_josep
 .dw 0x00000000, 0x00000000, 0x00000003, 0x00000096, 0x00000000, cred_null
 .dw 0x00000001, 0x00000002, 0x00000006, 0x00000028, 0x00000018, cred_null
-.dw 0x00000030, 0x00000090, 0x00000002, 0x00000008, 0x00000018, cred_graphics
+.dw 0x00000030, 0x00000090, 0x00000002, 0x00000008, 0x00000018, cred_graphics_video
 .dw 0x00000090, 0x000000a8, 0x00000002, 0x00000008, 0x00000018, cred_etokapa
 .dw 0x00000000, 0x00000000, 0x00000003, 0x00000096, 0x00000000, cred_null
 .dw 0x00000001, 0x00000002, 0x00000006, 0x00000028, 0x00000018, cred_null
@@ -25,7 +25,7 @@ credits_script:
 .dw 0x00000001, 0x00000003, 0x00000006, 0x00000028, 0x00000018, cred_null
 .dw 0x00000030, 0x00000090, 0x00000002, 0x00000008, 0x00000018, cred_editing
 .dw 0x00000090, 0x000000a8, 0x00000002, 0x00000008, 0x00000018, cred_etokapa
-.dw 0x00000090, 0x000000c0, 0x00000002, 0x00000008, 0x00000018, cred_josep
+.dw 0x00000090, 0x000000c0, 0x00000002, 0x00000008, 0x00000018, cred_josepmc
 .dw 0x00000000, 0x00000000, 0x00000003, 0x00000096, 0x00000000, cred_null
 .dw 0x00000001, 0x00000003, 0x00000006, 0x00000028, 0x00000018, cred_null
 .dw 0x00000030, 0x00000090, 0x00000002, 0x00000008, 0x00000018, cred_testing
@@ -36,11 +36,12 @@ credits_script:
 .dw 0x00000000, 0x00000000, 0x00000003, 0x00000096, 0x00000000, cred_null
 .dw 0x00000001, 0x00000005, 0x00000006, 0x00000028, 0x00000018, cred_null
 .dw 0x00000030, 0x00000090, 0x00000002, 0x00000008, 0x00000018, cred_special_thanks
-.dw 0x00000090, 0x000000a8, 0x00000002, 0x00000008, 0x00000018, cred_everyone_who_has_supported_me
-.dw 0x00000090, 0x000000c0, 0x00000002, 0x00000008, 0x00000018, cred_you
-.dw 0x00000090, 0x000000d8, 0x00000002, 0x00000008, 0x00000018, cred_line
+.dw 0x00000090, 0x000000a8, 0x00000002, 0x00000008, 0x00000018, cred_all_lost_kefin_contributors
+.dw 0x00000090, 0x000000c0, 0x00000002, 0x00000008, 0x00000018, cred_all_supporters
+.dw 0x00000090, 0x000000d8, 0x00000002, 0x00000008, 0x00000018, cred_you
+.dw 0x00000090, 0x000000f0, 0x00000002, 0x00000008, 0x00000018, cred_line
 .dw 0x00000000, 0x00000000, 0x00000003, 0x00000096, 0x00000000, cred_null
-.dw 0x00000000, 0x00000004, 0x00000006, 0x00000028, 0x00000018, cred_null
+.dw 0x00000000, 0x00000005, 0x00000006, 0x00000028, 0x00000018, cred_null
 .dw 0x00000000, 0x00000000, 0xffffffff, 0x00000000, 0x00000000, cred_null
 
 // brand-new lines referenced by YAML `str` entries
@@ -49,17 +50,19 @@ cred_lead: .str "Lead"
 cred_kaisaan: .str "Kaisaan"
 cred_translation: .str "Translation"
 cred_josep: .str "Josep"
-cred_graphics: .str "Graphics"
+cred_graphics_video: .str "Graphics & Video"
 cred_etokapa: .str "Etokapa"
 cred_programming: .str "Programming"
 cred_everdred: .str "Everdred"
 cred_editing: .str "Editing"
+cred_josepmc: .str "JosepMC"
 cred_testing: .str "Testing"
 cred_jazzysan: .str "Jazzysan"
 cred_wagamamalullaby: .str "wagamamalullaby"
 cred_dragonbleapiece: .str "DRAGONBLEAPIECE"
 cred_special_thanks: .str "Special Thanks"
-cred_everyone_who_has_supported_me: .str "Everyone Who Has Supported Me"
+cred_all_lost_kefin_contributors: .str "All Lost Kefin contributors"
+cred_all_supporters: .str "All supporters"
 cred_you: .str "You!"
 cred_line: .str ""
 .align 4
