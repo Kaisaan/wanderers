@@ -11,7 +11,7 @@ credits_script:
 .dw 0x00000000, 0x00000000, 0x00000003, 0x00000096, 0x00000000, cred_null
 .dw 0x00000001, 0x00000002, 0x00000006, 0x00000028, 0x00000018, cred_null
 .dw 0x00000030, 0x00000090, 0x00000002, 0x00000008, 0x00000018, cred_translation
-.dw 0x00000090, 0x000000a8, 0x00000002, 0x00000008, 0x00000018, cred_josep
+.dw 0x00000090, 0x000000a8, 0x00000002, 0x00000008, 0x00000018, cred_josepmc
 .dw 0x00000000, 0x00000000, 0x00000003, 0x00000096, 0x00000000, cred_null
 .dw 0x00000001, 0x00000002, 0x00000006, 0x00000028, 0x00000018, cred_null
 .dw 0x00000030, 0x00000090, 0x00000002, 0x00000008, 0x00000018, cred_graphics_video
@@ -49,13 +49,12 @@ cred_english_fan_translation: .str "English Fan Translation"
 cred_lead: .str "Lead"
 cred_kaisaan: .str "Kaisaan"
 cred_translation: .str "Translation"
-cred_josep: .str "Josep"
+cred_josepmc: .str "JosepMC"
 cred_graphics_video: .str "Graphics & Video"
 cred_etokapa: .str "Etokapa"
 cred_programming: .str "Programming"
 cred_everdred: .str "Everdred"
 cred_editing: .str "Editing"
-cred_josepmc: .str "JosepMC"
 cred_testing: .str "Testing"
 cred_jazzysan: .str "Jazzysan"
 cred_wagamamalullaby: .str "wagamamalullaby"
