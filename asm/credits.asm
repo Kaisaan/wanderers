@@ -23,12 +23,7 @@ credits_script:
 .dw 0x00000090, 0x000000c0, 0x00000002, 0x00000008, 0x00000018, cred_everdred
 .dw 0x00000000, 0x00000000, 0x00000003, 0x00000096, 0x00000000, cred_null
 .dw 0x00000001, 0x00000003, 0x00000006, 0x00000028, 0x00000018, cred_null
-.dw 0x00000030, 0x00000090, 0x00000002, 0x00000008, 0x00000018, cred_editing
-.dw 0x00000090, 0x000000a8, 0x00000002, 0x00000008, 0x00000018, cred_etokapa
-.dw 0x00000090, 0x000000c0, 0x00000002, 0x00000008, 0x00000018, cred_josepmc
-.dw 0x00000000, 0x00000000, 0x00000003, 0x00000096, 0x00000000, cred_null
-.dw 0x00000001, 0x00000003, 0x00000006, 0x00000028, 0x00000018, cred_null
-.dw 0x00000030, 0x00000090, 0x00000002, 0x00000008, 0x00000018, cred_testing
+.dw 0x00000030, 0x00000090, 0x00000002, 0x00000008, 0x00000018, cred_testing_feedback
 .dw 0x00000090, 0x000000a8, 0x00000002, 0x00000008, 0x00000018, cred_etokapa
 .dw 0x00000090, 0x000000c0, 0x00000002, 0x00000008, 0x00000018, cred_jazzysan
 .dw 0x00000090, 0x000000d8, 0x00000002, 0x00000008, 0x00000018, cred_wagamamalullaby
@@ -54,14 +49,13 @@ cred_graphics_video: .str "Graphics & Video"
 cred_etokapa: .str "Etokapa"
 cred_programming: .str "Programming"
 cred_everdred: .str "Everdred"
-cred_editing: .str "Editing"
-cred_testing: .str "Testing"
+cred_testing_feedback: .str "Testing & Feedback"
 cred_jazzysan: .str "Jazzysan"
 cred_wagamamalullaby: .str "wagamamalullaby"
 cred_dragonbleapiece: .str "DRAGONBLEAPIECE"
 cred_special_thanks: .str "Special Thanks"
-cred_all_lost_kefin_contributors: .str "All Lost Kefin contributors"
-cred_all_supporters: .str "All supporters"
+cred_all_lost_kefin_contributors: .str "All Lost Kefin Contributors"
+cred_all_supporters: .str "All Supporters"
 cred_you: .str "You!"
 cred_line: .str ""
 .align 4

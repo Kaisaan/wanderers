@@ -21,12 +21,7 @@
     - name: {str: "Everdred"}
 
 - lines:
-    - title: {str: "Editing"}
-    - name: {str: "Etokapa"}
-    - name: {str: "JosepMC"}
-
-- lines:
-    - title: {str: "Testing"}
+    - title: {str: "Testing & Feedback"}
     - name: {str: "Etokapa"}
     - name: {str: "Jazzysan"}
     - name: {str: "wagamamalullaby"}
@@ -34,8 +29,8 @@
 
 - lines:
     - title: {str: "Special Thanks"}
-    - name: {str: "All Lost Kefin contributors"}
-    - name: {str: "All supporters"}
+    - name: {str: "All Lost Kefin Contributors"}
+    - name: {str: "All Supporters"}
     - name: {str: "You!"}
     - name: {str: ""}
   clear: {start: 0x0}

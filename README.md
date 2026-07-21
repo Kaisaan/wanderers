@@ -18,12 +18,12 @@ There are maps made by wagamamalullaby that are available to view [in this repo]
 
 # Contributors
 - Kaisaan: Project Lead, Programming, Hacking, Testing
-- Everdred: Programming, Hacking, Script development, made the VWF code, added in custom credits for the fan translation, helping with many technical issues
-- JosepMC: Translation
-- Etokapa: Editing the graphics and opening video, testing
-- wagamamalullaby: Testing, testing on real hardware, making a proper guide and maps for the game
-- Jazzysan: Testing, speedrunning this game
-- DRAGONBLEAPIECE: Testing
+- Everdred: Programming, Hacking, Script Development, Made the Variable-Width Font (VWF) code, Added Fan Translation Credits, other Technical Help
+- JosepMC: Translation, Testing
+- Etokapa: Editing the Graphics and Opening Video, Testing, Proofreading, Feedback
+- wagamamalullaby: Testing, Proofreading, Feedback, Testing on Real Hardware, Making Maps and Guides for the Game
+- Jazzysan: Testing, Proofreading, Feedback, Speedrunning this Game
+- DRAGONBLEAPIECE: Testing, Proofreading, Feedback
 
 # Related Materials
 - Cheatcodes by [luc-ita](https://gamehacking.org/game/100381), and [TAK](https://www.ngemu.com/posts/1228814/)
