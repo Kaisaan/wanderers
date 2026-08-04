@@ -968,7 +968,7 @@
 // Hardcoded stuff (Has no pointers)
 
 .orga 0x14E490 :: @L14E490: .str L14E490 // Yes   No Text
-.orga 0x14E4A0 :: @L14E4A0: .str L14E4A0 // Ha (unknown)
+// .orga 0x14E4A0 :: @L14E4A0: .str L14E4A0 // は Ha (unknown)
 .orga 0x14E4A8 :: @L14E4A8: .str L14E4A8 // A (unknown)
 .orga 0x14E4B0 :: @L14E4B0: .str L14E4B0 // No Data
 
